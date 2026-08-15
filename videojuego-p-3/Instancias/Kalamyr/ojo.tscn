@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://nhm2sv6dak3q"]
+
+[ext_resource type="PackedScene" uid="uid://bsvk6q4so76b4" path="res://Models/Emma/Ojo.glb" id="1_4ua1d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4r4fo"]
+size = Vector3(1, 1.1608887, 0.536438)
+
+[node name="Ojo" unique_id=219193402 instance=ExtResource("1_4ua1d")]
+
+[node name="Skeleton3D" parent="Armature_003" parent_id_path=PackedInt32Array(1899704393) index="0" unique_id=1970984096]
+bones/1/rotation = Quaternion(-5.1682405e-06, -0.00072431104, 0.38088846, 0.92462075)
+bones/2/rotation = Quaternion(-0.0004518564, -0.0002485977, 0.38095626, 0.924593)
+bones/3/position = Vector3(0.2334076, 0.37849885, 1.0650334e-07)
+bones/3/rotation = Quaternion(2.7061686e-15, 9.992007e-16, 0, 1)
+bones/4/position = Vector3(0.23325202, 0.5304535, -6.310703e-05)
+bones/4/rotation = Quaternion(0.00016665438, 0.00013695848, 0.0100682145, 0.99994934)
+bones/4/scale = Vector3(1.0577891, 1.057789, 1.057789)
+bones/5/position = Vector3(-0.2544352, 0.36588204, -1.1502596e-08)
+bones/5/rotation = Quaternion(2.7061686e-15, 9.992007e-16, 0, 1)
+bones/6/position = Vector3(-0.2544895, 0.51783115, -8.292924e-05)
+bones/6/rotation = Quaternion(-0.0003507526, -0.0002884982, 0.007552074, 0.9999714)
+bones/6/scale = Vector3(1.0577891, 1.0577891, 1.057789)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=911733326]
+autoplay = &"EYE_IDLE"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=1977060671]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5887451, 0.054656982)
+shape = SubResource("BoxShape3D_4r4fo")

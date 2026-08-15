@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c76ycjcq8tj10"]
+
+[ext_resource type="PackedScene" uid="uid://uwbdqgo7fkiy" path="res://Models/Emma/Escaleras.glb" id="1_owgsg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xxodp"]
+size = Vector3(1, 0.9938965, 1)
+
+[node name="Escaleras" unique_id=551104668 instance=ExtResource("1_owgsg")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1061267382]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49768066, 0)
+shape = SubResource("BoxShape3D_xxodp")

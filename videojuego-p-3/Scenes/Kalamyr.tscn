@@ -1,38 +1,400 @@
 [gd_scene format=3 uid="uid://dunfrvojkgyto"]
 
+[ext_resource type="Texture2D" uid="uid://dq3eo7gq7py8r" path="res://Models/Emma/sky_17_2k/sky_17_2k.png" id="1_nbeo2"]
 [ext_resource type="PackedScene" uid="uid://djk1elmnscbhj" path="res://Instancias/Kalamyr/krakencito_1.tscn" id="2_61ufm"]
 [ext_resource type="PackedScene" uid="uid://vpnfyeb3ctfr" path="res://Instancias/Kalamyr/tentaculo.tscn" id="2_n0qhr"]
+[ext_resource type="PackedScene" uid="uid://c33xx1gmenxdt" path="res://Instancias/Kalamyr/muro_1.tscn" id="3_n0qhr"]
+[ext_resource type="PackedScene" uid="uid://nhm2sv6dak3q" path="res://Instancias/Kalamyr/ojo.tscn" id="5_872uu"]
+[ext_resource type="PackedScene" uid="uid://c76ycjcq8tj10" path="res://Instancias/Kalamyr/escaleras.tscn" id="6_fvnn2"]
+[ext_resource type="PackedScene" uid="uid://dhwnk3c71i74m" path="res://Instancias/Kalamyr/muro_3.tscn" id="7_aorjt"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_61ufm"]
-sky_top_color = Color(0.6359262, 0.23159719, 0.7501697, 1)
-sky_horizon_color = Color(0.6424454, 0.5426649, 0.67445886, 1)
-ground_bottom_color = Color(0.16960758, 0.1748147, 0.18341783, 1)
-ground_horizon_color = Color(0.6424454, 0.5426649, 0.67445886, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n0qhr"]
+sky_top_color = Color(0.3405957, 0.10055073, 0.4585923, 1)
+sky_horizon_color = Color(0.65143085, 0.5716367, 0.7132123, 1)
+sky_cover = ExtResource("1_nbeo2")
+ground_bottom_color = Color(0.1593132, 0.19699898, 0.22212514, 1)
+ground_horizon_color = Color(0.65143085, 0.5716367, 0.7132123, 1)
 
-[sub_resource type="Sky" id="Sky_n0qhr"]
-sky_material = SubResource("ProceduralSkyMaterial_61ufm")
+[sub_resource type="Sky" id="Sky_nbeo2"]
+sky_material = SubResource("ProceduralSkyMaterial_n0qhr")
 
-[sub_resource type="Environment" id="Environment_nbeo2"]
+[sub_resource type="Environment" id="Environment_872uu"]
 background_mode = 2
-sky = SubResource("Sky_n0qhr")
+sky = SubResource("Sky_nbeo2")
 tonemap_mode = 2
 ssao_enabled = true
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.38544372, 0.155821, 0.6640487, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_61ufm"]
+
+[sub_resource type="Shader" id="Shader_872uu"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.6.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform ivec2 albedo_texture_size;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform sampler2D texture_refraction : filter_linear_mipmap, repeat_enable;
+uniform float refraction : hint_range(-1.0, 1.0, 0.001);
+uniform vec4 refraction_texture_channel;
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_linear_mipmap;
+uniform sampler2D depth_texture : hint_depth_texture, repeat_disable, filter_nearest;
+
+uniform sampler2D texture_normal : hint_roughness_normal, filter_linear_mipmap, repeat_enable;
+uniform float normal_scale : hint_range(-16.0, 16.0);
+varying vec3 uv1_triplanar_pos;
+
+uniform float uv1_blend_sharpness : hint_range(0.0, 150.0, 0.001);
+varying vec3 uv1_power_normal;
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	vec3 normal = MODEL_NORMAL_MATRIX * NORMAL;
+
+	TANGENT = vec3(0.0, 0.0, -1.0) * abs(normal.x);
+	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.y);
+	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.z);
+	TANGENT = inverse(MODEL_NORMAL_MATRIX) * normalize(TANGENT);
+
+	BINORMAL = vec3(0.0, 1.0, 0.0) * abs(normal.x);
+	BINORMAL += vec3(0.0, 0.0, -1.0) * abs(normal.y);
+	BINORMAL += vec3(0.0, 1.0, 0.0) * abs(normal.z);
+	BINORMAL = inverse(MODEL_NORMAL_MATRIX) * normalize(BINORMAL);
+
+	// UV1 Triplanar: Enabled (with World Triplanar)
+	uv1_power_normal = pow(abs(normal), vec3(uv1_blend_sharpness));
+	uv1_triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz * uv1_scale + uv1_offset + TIME*0.003;
+	uv1_power_normal /= dot(uv1_power_normal, vec3(1.0));
+	uv1_triplanar_pos *= vec3(1.0, -1.0, 1.0);
+}
+
+vec4 triplanar_texture(sampler2D p_sampler, vec3 p_weights, vec3 p_triplanar_pos) {
+	vec4 samp = vec4(0.0);
+	samp += texture(p_sampler, p_triplanar_pos.xy) * p_weights.z;
+	samp += texture(p_sampler, p_triplanar_pos.xz) * p_weights.y;
+	samp += texture(p_sampler, p_triplanar_pos.zy * vec2(-1.0, 1.0)) * p_weights.x;
+	return samp;
+}
+
+void fragment() {
+	vec4 albedo_tex = triplanar_texture(texture_albedo, uv1_power_normal, uv1_triplanar_pos);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+	float metallic_tex = dot(triplanar_texture(texture_metallic, uv1_power_normal, uv1_triplanar_pos), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(triplanar_texture(texture_roughness, uv1_power_normal, uv1_triplanar_pos), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+
+	// Normal Map: Enabled
+	NORMAL_MAP = triplanar_texture(texture_normal, uv1_power_normal, uv1_triplanar_pos).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
+
+	// Refraction: Enabled (with normal map texture)
+	vec3 unpacked_normal = NORMAL_MAP;
+	unpacked_normal.xy = unpacked_normal.xy * 2.0 - 1.0;
+	unpacked_normal.z = sqrt(max(0.0, 1.0 - dot(unpacked_normal.xy, unpacked_normal.xy)));
+	vec3 ref_normal = normalize(mix(
+			NORMAL,
+			TANGENT * unpacked_normal.x + BINORMAL * unpacked_normal.y + NORMAL * unpacked_normal.z,
+			NORMAL_MAP_DEPTH));
+	vec2 ref_ofs = SCREEN_UV - ref_normal.xy * dot(triplanar_texture(texture_refraction, uv1_power_normal, uv1_triplanar_pos), refraction_texture_channel) * refraction;
+
+	float ref_amount = 1.0 - albedo.a * albedo_tex.a;
+
+	float refraction_depth_tex = textureLod(depth_texture, ref_ofs, 0.0).r;
+	vec4 ndc = OUTPUT_IS_SRGB ? vec4(vec3(SCREEN_UV, refraction_depth_tex) * 2.0 - 1.0, 1.0) : vec4(SCREEN_UV * 2.0 - 1.0, refraction_depth_tex, 1.0);
+	vec4 refraction_view_pos = INV_PROJECTION_MATRIX * ndc;
+	refraction_view_pos.xyz /= refraction_view_pos.w;
+
+	// If the depth buffer is lower then the model's Z position, use the refracted UV, otherwise use the normal screen UV.
+	// At low depth differences, decrease refraction intensity to avoid sudden discontinuities.
+	EMISSION += textureLod(screen_texture, mix(SCREEN_UV, ref_ofs, smoothstep(0.0, 1.0, VERTEX.z - refraction_view_pos.z)), ROUGHNESS * 8.0).rgb * ref_amount * EXPOSURE;
+	ALBEDO *= 1.0 - ref_amount;
+	// Force transparency on the material (required for refraction).
+	ALPHA = 1.0;
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_872uu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fvnn2"]
+noise = SubResource("FastNoiseLite_872uu")
+seamless = true
+as_normal_map = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aorjt"]
+noise = SubResource("FastNoiseLite_872uu")
+seamless = true
+as_normal_map = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fvnn2"]
+render_priority = 0
+shader = SubResource("Shader_872uu")
+shader_parameter/albedo = Color(0, 0.78039217, 0.13725491, 0.6509804)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/texture_refraction = SubResource("NoiseTexture2D_aorjt")
+shader_parameter/refraction = 0.05
+shader_parameter/refraction_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_fvnn2")
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv1_blend_sharpness = 1.0
+shader_parameter/uv1_scale = Vector3(0.01, 0.01, 0.01)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [node name="Kalamyr" type="Node3D" unique_id=1206400813]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=987965662]
-environment = SubResource("Environment_nbeo2")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=547784181]
+environment = SubResource("Environment_872uu")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=982065352]
-transform = Transform3D(0.35510695, -0.59713656, 0.7192545, 0, 0.7693996, 0.63876784, -0.93482566, -0.2268309, 0.27321914, 0, 0, 0)
-light_color = Color(11.413206, 5.800219, 17.658003, 1)
-light_energy = 0.1
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=860835702]
+transform = Transform3D(-0.51653343, -0.3993515, 0.7574375, 0, 0.88458097, 0.46638668, -0.85626704, 0.24090429, -0.45691565, 0, 1, 0)
+light_color = Color(0.80451053, 0.71836704, 0.9521218, 1)
+light_energy = 2.0
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1127240183]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2, -6)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 3, -6)
 
 [node name="Krakencito_1" parent="." unique_id=1737299300 instance=ExtResource("2_61ufm")]
+transform = Transform3D(0.39999998, 0, 0, 0, 0.39999998, 0, 0, 0, 0.39999998, 0, 2, 2)
 
 [node name="Tentaculo" parent="." unique_id=607207124 instance=ExtResource("2_n0qhr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+transform = Transform3D(0.39999998, 0, 0, 0, 0.39999998, 0, 0, 0, 0.39999998, -2, 1, -2)
+
+[node name="Tentaculo2" parent="." unique_id=1975369447 instance=ExtResource("2_n0qhr")]
+transform = Transform3D(-0.39999998, 0, -3.7252903e-08, 0, 0.39999998, 0, 3.7252903e-08, 0, -0.39999998, 2, 1, -2)
+
+[node name="Tentaculo3" parent="." unique_id=1848551570 instance=ExtResource("2_n0qhr")]
+transform = Transform3D(1.0399998, 0, 0, 0, 1.0399998, 0, 0, 0, 1.0399998, -5.2, 1, 2)
+
+[node name="Tentaculo4" parent="." unique_id=1490427360 instance=ExtResource("2_n0qhr")]
+transform = Transform3D(-1.0399998, 0, -9.685755e-08, 0, 1.0399998, 0, 9.685755e-08, 0, -1.0399998, 5.2, 1, 2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1170945089]
+transform = Transform3D(12.194, 0, 0, 0, 60.12, 0, 0, 0, 10, 0, 1.1630292, 2)
+mesh = SubResource("PlaneMesh_61ufm")
+surface_material_override/0 = SubResource("ShaderMaterial_fvnn2")
+
+[node name="Ojo" parent="." unique_id=219193402 instance=ExtResource("5_872uu")]
+transform = Transform3D(-1.3987645e-07, 0, -3.2, 0, 3.2, 0, 3.2, 0, -1.3987645e-07, 3, 1, 6)
+
+[node name="Ojo3" parent="." unique_id=224613554 instance=ExtResource("5_872uu")]
+transform = Transform3D(0.8345599, 0, -0.22361971, 0, 0.864, 0, 0.22361971, 0, 0.8345599, 3, 1, -3)
+
+[node name="Ojo4" parent="." unique_id=63368298 instance=ExtResource("5_872uu")]
+transform = Transform3D(-0.8639999, 0, 8.940696e-08, 0, 0.8639999, 0, -8.940696e-08, 0, -0.8639999, -3, 1, -3)
+
+[node name="Ojo2" parent="." unique_id=1785415720 instance=ExtResource("5_872uu")]
+transform = Transform3D(-1.3987645e-07, 0, 3.2, 0, 3.2, 0, 3.2, 0, 1.3987645e-07, -3, 1, 6)
+
+[node name="Muro_13" parent="." unique_id=832662982 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -2, 2, -1)
+
+[node name="Muro_14" parent="." unique_id=108078073 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -3, 2, -1)
+
+[node name="Muro_15" parent="." unique_id=1984096295 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -4, 2, -1)
+
+[node name="Muro_18" parent="." unique_id=621077250 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -5, 2, -1)
+
+[node name="Muro_19" parent="." unique_id=89253261 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -6, 2, -1)
+
+[node name="Muro_20" parent="." unique_id=1544636460 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -7, 2, -1)
+
+[node name="Muro_21" parent="." unique_id=1404146042 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -2, 2, 0)
+
+[node name="Muro_22" parent="." unique_id=1503123170 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -3, 2, 0)
+
+[node name="Muro_23" parent="." unique_id=1507191682 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -4, 2, 0)
+
+[node name="Muro_24" parent="." unique_id=49148205 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -5, 2, 0)
+
+[node name="Muro_51" parent="." unique_id=1165909613 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -7, 3, -1)
+
+[node name="Muro_52" parent="." unique_id=1756327813 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -7, 3, 0)
+
+[node name="Muro_53" parent="." unique_id=2000089984 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 7, 3, -1)
+
+[node name="Muro_54" parent="." unique_id=1378678952 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 7, 3, 0)
+
+[node name="Muro_25" parent="." unique_id=1064126217 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -6, 2, 0)
+
+[node name="Muro_26" parent="." unique_id=903046664 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -7, 2, 0)
+
+[node name="Muro_27" parent="." unique_id=1216380215 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 7, 2, -1)
+
+[node name="Muro_28" parent="." unique_id=946747774 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 6, 2, -1)
+
+[node name="Muro_29" parent="." unique_id=1706506143 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 5, 2, -1)
+
+[node name="Muro_30" parent="." unique_id=1301011264 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 4, 2, -1)
+
+[node name="Muro_31" parent="." unique_id=248515606 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3, 2, -1)
+
+[node name="Muro_32" parent="." unique_id=252478636 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2, 2, -1)
+
+[node name="Muro_39" parent="." unique_id=219528738 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 1.5477715, 1, -0.49400675)
+
+[node name="Muro_40" parent="." unique_id=639020182 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 1.5477715, 1, 0.50599325)
+
+[node name="Muro_41" parent="." unique_id=117424309 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -1.4522285, 1, -0.49400675)
+
+[node name="Muro_42" parent="." unique_id=108935159 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, -1.4522285, 1, 0.50599325)
+
+[node name="Muro_33" parent="." unique_id=210798953 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 7, 2, 0)
+
+[node name="Muro_34" parent="." unique_id=1157260992 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 6, 2, 0)
+
+[node name="Muro_35" parent="." unique_id=404534791 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 5, 2, 0)
+
+[node name="Muro_36" parent="." unique_id=1010773573 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 4, 2, 0)
+
+[node name="Muro_37" parent="." unique_id=1411581161 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3, 2, 0)
+
+[node name="Muro_38" parent="." unique_id=1987131515 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 2, 2, 0)
+
+[node name="Muro_43" parent="." unique_id=1681640648 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1, 2, -1)
+
+[node name="Muro_44" parent="." unique_id=753724393 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1, 2, 0)
+
+[node name="Muro_45" parent="." unique_id=957969055 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 2, -1)
+
+[node name="Muro_46" parent="." unique_id=1428579522 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 2, 0)
+
+[node name="Muro_47" parent="." unique_id=467682920 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -1, 2, -1)
+
+[node name="Muro_48" parent="." unique_id=1524957851 instance=ExtResource("3_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -1, 2, 0)
+
+[node name="Escaleras" parent="." unique_id=551104668 instance=ExtResource("6_fvnn2")]
+transform = Transform3D(-1, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 0, -1, -1, 1, -1.4058657)
+
+[node name="Escaleras2" parent="." unique_id=1997050884 instance=ExtResource("6_fvnn2")]
+transform = Transform3D(-1, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 0, -1, 0, 1, -1.4058657)
+
+[node name="Escaleras3" parent="." unique_id=481653121 instance=ExtResource("6_fvnn2")]
+transform = Transform3D(-1, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 0, -1, 1, 1, -1.4058657)
+
+[node name="Escaleras4" parent="." unique_id=2090121366 instance=ExtResource("6_fvnn2")]
+transform = Transform3D(1.6292068e-07, 0, 1, 0, 1, 0, -1, 0, 1.6292068e-07, -6, 2, -0.40586567)
+
+[node name="Escaleras5" parent="." unique_id=649489320 instance=ExtResource("6_fvnn2")]
+transform = Transform3D(1.6292068e-07, 0, 1, 0, 1, 0, -1, 0, 1.6292068e-07, -6, 2, 0.59413433)
+
+[node name="Escaleras6" parent="." unique_id=852124717 instance=ExtResource("6_fvnn2")]
+transform = Transform3D(-1.4901161e-07, 0, -1, 0, 1, 0, 1, 0, -1.4901161e-07, 6, 2, 0.5941342)
+
+[node name="Escaleras8" parent="." unique_id=259206824 instance=ExtResource("6_fvnn2")]
+transform = Transform3D(-1, 0, 1.9272301e-07, 0, 1, 0, -1.9272301e-07, 0, -1, 7, 3, 0.5941342)
+
+[node name="Escaleras9" parent="." unique_id=2032344426 instance=ExtResource("6_fvnn2")]
+transform = Transform3D(-1, 0, 1.9272301e-07, 0, 1, 0, -1.9272301e-07, 0, -1, -7, 3, 0.5941342)
+
+[node name="Escaleras7" parent="." unique_id=993939640 instance=ExtResource("6_fvnn2")]
+transform = Transform3D(-1.4901161e-07, 0, -1, 0, 1, 0, 1, 0, -1.4901161e-07, 6, 2, -0.40586558)
+
+[node name="Muro_3" parent="." unique_id=128506105 instance=ExtResource("7_aorjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -1)
+
+[node name="Muro_4" parent="." unique_id=105395764 instance=ExtResource("7_aorjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -1)
+
+[node name="Muro_5" parent="." unique_id=1337324052 instance=ExtResource("7_aorjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -1)
+
+[node name="Muro_6" parent="." unique_id=60907348 instance=ExtResource("7_aorjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -1)
+
+[node name="Muro_7" parent="." unique_id=358205698 instance=ExtResource("7_aorjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -1)
+
+[node name="Muro_8" parent="." unique_id=279677723 instance=ExtResource("7_aorjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -1)
+
+[node name="Muro_50" parent="." unique_id=1153680461 instance=ExtResource("7_aorjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2, -1)
+
+[node name="Muro_9" parent="." unique_id=1308800297 instance=ExtResource("7_aorjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -1)
+
+[node name="Muro_10" parent="." unique_id=762101706 instance=ExtResource("7_aorjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -1)
+
+[node name="Muro_11" parent="." unique_id=203292633 instance=ExtResource("7_aorjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -1)
+
+[node name="Muro_12" parent="." unique_id=1860251690 instance=ExtResource("7_aorjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -1)
+
+[node name="Muro_49" parent="." unique_id=1727354358 instance=ExtResource("7_aorjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, -1)
+
+[node name="Muro_16" parent="." unique_id=1517335180 instance=ExtResource("7_aorjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -1)
+
+[node name="Muro_17" parent="." unique_id=276195056 instance=ExtResource("7_aorjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -1)
