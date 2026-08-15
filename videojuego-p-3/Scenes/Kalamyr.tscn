@@ -1,14 +1,38 @@
 [gd_scene format=3 uid="uid://dunfrvojkgyto"]
 
-[ext_resource type="PackedScene" uid="uid://d3hu7yavg523o" path="res://Models/Emma/Tentaculo.glb" id="1_qddku"]
 [ext_resource type="PackedScene" uid="uid://djk1elmnscbhj" path="res://Instancias/Kalamyr/krakencito_1.tscn" id="2_61ufm"]
+[ext_resource type="PackedScene" uid="uid://vpnfyeb3ctfr" path="res://Instancias/Kalamyr/tentaculo.tscn" id="2_n0qhr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_61ufm"]
+sky_top_color = Color(0.6359262, 0.23159719, 0.7501697, 1)
+sky_horizon_color = Color(0.6424454, 0.5426649, 0.67445886, 1)
+ground_bottom_color = Color(0.16960758, 0.1748147, 0.18341783, 1)
+ground_horizon_color = Color(0.6424454, 0.5426649, 0.67445886, 1)
+
+[sub_resource type="Sky" id="Sky_n0qhr"]
+sky_material = SubResource("ProceduralSkyMaterial_61ufm")
+
+[sub_resource type="Environment" id="Environment_nbeo2"]
+background_mode = 2
+sky = SubResource("Sky_n0qhr")
+tonemap_mode = 2
+ssao_enabled = true
 
 [node name="Kalamyr" type="Node3D" unique_id=1206400813]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1127240183]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 6)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=987965662]
+environment = SubResource("Environment_nbeo2")
 
-[node name="Tentaculo" parent="." unique_id=2031691910 instance=ExtResource("1_qddku")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.146901, -1.1920929e-07, 0.78010464)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=982065352]
+transform = Transform3D(0.35510695, -0.59713656, 0.7192545, 0, 0.7693996, 0.63876784, -0.93482566, -0.2268309, 0.27321914, 0, 0, 0)
+light_color = Color(11.413206, 5.800219, 17.658003, 1)
+light_energy = 0.1
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1127240183]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2, -6)
 
 [node name="Krakencito_1" parent="." unique_id=1737299300 instance=ExtResource("2_61ufm")]
+
+[node name="Tentaculo" parent="." unique_id=607207124 instance=ExtResource("2_n0qhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
