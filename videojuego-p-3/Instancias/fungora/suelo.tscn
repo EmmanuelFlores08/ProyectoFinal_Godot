@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://f3ol8itah3bf"]
 
-[ext_resource type="PackedScene" uid="uid://ccrdmmi50wdm2" path="res://Models/Dalu/suelo.glb" id="1_diuvw"]
+[ext_resource type="PackedScene" uid="uid://d28ugno3qrv3a" path="res://Models/Dalu/props/suelo.glb" id="1_diuvw"]
 
-[node name="suelo" unique_id=1906498878 instance=ExtResource("1_diuvw")]
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_diuvw"]
 
-[node name="piso relieve" parent="." index="0" unique_id=1784910742]
-transform = Transform3D(11.895893, 0, 0, 0, -0.09966129, 0, 0, 0, 12.357639, -0.12814012, 0.111328125, -1.8640466)
+[node name="suelo2" unique_id=1754667335 instance=ExtResource("1_diuvw")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=708203047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.025, 0, 0, 0)
+shape = SubResource("WorldBoundaryShape3D_diuvw")

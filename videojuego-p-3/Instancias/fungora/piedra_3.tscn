@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://d4dehdxq8gvki"]
+
+[ext_resource type="PackedScene" uid="uid://n3e40js3towj" path="res://Models/Dalu/props/piedra3.glb" id="1_8qjjj"]
+
+[node name="piedra3" unique_id=472569863 instance=ExtResource("1_8qjjj")]

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bpheyji2noslq"]
+
+[ext_resource type="PackedScene" uid="uid://bsq470eibo6sm" path="res://Models/Dalu/props/piedra2.glb" id="1_2uqxp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2uqxp"]
+
+[node name="piedra2" unique_id=1207390234 instance=ExtResource("1_2uqxp")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=731073679]
+shape = SubResource("BoxShape3D_2uqxp")

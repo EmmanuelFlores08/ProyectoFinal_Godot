@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ccrdmmi50wdm2"
-path="res://.godot/imported/suelo.glb-316020a9818e369ce7155331a4e9d7a7.scn"
+uid="uid://bsq470eibo6sm"
+path="res://.godot/imported/piedra2.glb-074132b7d9a2137cfdd1542f061e44a1.scn"
 
 [deps]
 
-source_file="res://Models/Dalu/suelo.glb"
-dest_files=["res://.godot/imported/suelo.glb-316020a9818e369ce7155331a4e9d7a7.scn"]
+source_file="res://Models/Dalu/props/piedra2.glb"
+dest_files=["res://.godot/imported/piedra2.glb-074132b7d9a2137cfdd1542f061e44a1.scn"]
 
 [params]
 
-nodes/root_type=""
-nodes/root_name=""
+nodes/root_type="StaticBody3D"
+nodes/root_name="piedra2"
 nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

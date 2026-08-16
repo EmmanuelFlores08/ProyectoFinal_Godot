@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b6xojv6c5eqin"]
+
+[ext_resource type="PackedScene" uid="uid://c1utbbmiqqdqu" path="res://Models/Dalu/props/piedra1.glb" id="1_opf6c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_opf6c"]
+size = Vector3(3, 1, 4)
+
+[node name="piedra1" unique_id=1728414065 instance=ExtResource("1_opf6c")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1" unique_id=1978489755]
+transform = Transform3D(0.71563405, 0, 0, 0, 0.6686769, 0, 0, 0, 0.4961012, 0.64687574, 0.013279811, 0.26626262)
+shape = SubResource("BoxShape3D_opf6c")

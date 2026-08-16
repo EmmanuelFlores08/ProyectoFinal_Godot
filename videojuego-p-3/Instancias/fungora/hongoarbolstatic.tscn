@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bllllk1o4rg4q"]
+
+[ext_resource type="PackedScene" uid="uid://c6om365dd3t05" path="res://Models/Dalu/props/hongoarbolstatic.glb" id="1_74c1t"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_74c1t"]
+radius = 0.125
+
+[node name="hongoarbolstatic" unique_id=506107855 instance=ExtResource("1_74c1t")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=848674632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_74c1t")

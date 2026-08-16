@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx1ftya8y6c7j"
-path.s3tc="res://.godot/imported/suelo_WhatsApp Image 2026-08-06 at 10.37.jpg-6583b46d80f0802d946edcdfea1f396c.s3tc.ctex"
+uid="uid://b4kyp6tolt14e"
+path.s3tc="res://.godot/imported/hongoarbolstatic_WhatsApp Image 2026-08-04 at 10.13.jpg-14dd3547d3c9de017cde42be092472b1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "cfc08aecc46e69d4fdcc42c97238b530"
+"md5": "e0539fafe5a8c3bbd7ee102fde7a847a"
 }
 
 [deps]
 
-source_file="res://Models/Dalu/suelo_WhatsApp Image 2026-08-06 at 10.37.jpg"
-dest_files=["res://.godot/imported/suelo_WhatsApp Image 2026-08-06 at 10.37.jpg-6583b46d80f0802d946edcdfea1f396c.s3tc.ctex"]
+source_file="res://Models/Dalu/props/hongoarbolstatic_WhatsApp Image 2026-08-04 at 10.13.jpg"
+dest_files=["res://.godot/imported/hongoarbolstatic_WhatsApp Image 2026-08-04 at 10.13.jpg-14dd3547d3c9de017cde42be092472b1.s3tc.ctex"]
 
 [params]
 

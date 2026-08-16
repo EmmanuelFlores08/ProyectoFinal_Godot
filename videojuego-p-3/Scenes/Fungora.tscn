@@ -1,8 +1,100 @@
 [gd_scene format=3 uid="uid://hu6wodonncut"]
 
-[ext_resource type="PackedScene" uid="uid://ccrdmmi50wdm2" path="res://Models/Dalu/suelo.glb" id="1_yhr2q"]
+[ext_resource type="PackedScene" uid="uid://drrski6n0h6u8" path="res://Instancias/fungora/piedra_5.tscn" id="2_51gkq"]
+[ext_resource type="PackedScene" uid="uid://d275xdnuv25d5" path="res://Instancias/fungora/piedra_4.tscn" id="3_buwj2"]
+[ext_resource type="PackedScene" uid="uid://bpheyji2noslq" path="res://Instancias/fungora/piedra_2.tscn" id="5_mfawc"]
+[ext_resource type="PackedScene" uid="uid://d4dehdxq8gvki" path="res://Instancias/fungora/piedra_3.tscn" id="6_yuq5n"]
+[ext_resource type="PackedScene" uid="uid://b6xojv6c5eqin" path="res://Instancias/fungora/piedra_1.tscn" id="7_mfawc"]
+[ext_resource type="PackedScene" uid="uid://f3ol8itah3bf" path="res://Instancias/fungora/suelo.tscn" id="7_uyh55"]
+[ext_resource type="PackedScene" uid="uid://bllllk1o4rg4q" path="res://Instancias/fungora/hongoarbolstatic.tscn" id="7_vqeyc"]
+
+[sub_resource type="GDScript" id="GDScript_uyh55"]
+resource_name = "prueba"
+script/source = "extends CharacterBody3D
+
+
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
+
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var input_dir := Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\")
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	move_and_slide()
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mfawc"]
+radius = 1.5195313
+height = 3.0390625
 
 [node name="Fungora" type="Node3D" unique_id=1908667810]
 
-[node name="suelo" parent="." unique_id=1110950323 instance=ExtResource("1_yhr2q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030105114, 0.33181715, 0.2978778)
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=568914702]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.845963, 4.9635735, 5.825185)
+script = SubResource("GDScript_uyh55")
+
+[node name="piedra3" parent="CharacterBody3D" unique_id=472569863 instance=ExtResource("6_yuq5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.871522, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=264852919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.3519907, 0)
+shape = SubResource("CapsuleShape3D_mfawc")
+
+[node name="piedra5_1" parent="." unique_id=298918255 instance=ExtResource("2_51gkq")]
+transform = Transform3D(1, 0, 0, 0, 0.9888839, 0.14868969, 0, -0.14868969, 0.9888839, 8.410197, 0.16030443, -9.898781)
+
+[node name="piedra5_2" parent="." unique_id=631903 instance=ExtResource("2_51gkq")]
+transform = Transform3D(0.9808804, -0.19086389, -0.03800847, 0.1926143, 0.9800275, 0.0494552, 0.027810136, -0.05583061, 0.9980529, 9.422853, 0.64630723, 1.4710917)
+
+[node name="piedra5_3" parent="." unique_id=2081078548 instance=ExtResource("2_51gkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6835947, 0.49551904, 11.765882)
+
+[node name="piedra5_4" parent="." unique_id=1080143164 instance=ExtResource("2_51gkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.255004, -0.31882185, -3.3921356)
+
+[node name="piedra4_1" parent="." unique_id=1559330535 instance=ExtResource("3_buwj2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 5.49876)
+
+[node name="piedra4_2" parent="." unique_id=4850027 instance=ExtResource("3_buwj2")]
+transform = Transform3D(0.99526304, -0.09721811, 0, 0.09721811, 0.99526304, 0, 0, 0, 1, 7.1470175, 1.3019595, 11.340885)
+
+[node name="piedra4_3" parent="." unique_id=1619213976 instance=ExtResource("3_buwj2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9117084, 0.21266544, -10.693965)
+
+[node name="piedra2" parent="." unique_id=1207390234 instance=ExtResource("5_mfawc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2.1408882)
+
+[node name="suelo2" parent="." unique_id=1754667335 instance=ExtResource("7_uyh55")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="hongoarbolstatic_1" parent="." unique_id=506107855 instance=ExtResource("7_vqeyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 11)
+
+[node name="hongoarbolstatic_2" parent="." unique_id=1735944447 instance=ExtResource("7_vqeyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8214569, 0.5498533, -11.140224)
+
+[node name="hongoarbolstatic_3" parent="." unique_id=80491828 instance=ExtResource("7_vqeyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.277855, 0.10836077, 6.1257343)
+
+[node name="piedra1" parent="." unique_id=1728414065 instance=ExtResource("7_mfawc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.55244, 1, 2.9169478)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2139396336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 17.79014)
