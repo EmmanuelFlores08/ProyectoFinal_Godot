@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dhwnk3c71i74m"]
+
+[ext_resource type="PackedScene" uid="uid://bhytg8ns5d6pk" path="res://Models/Emma/Muro_3.glb" id="1_ypr0p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w22c0"]
+size = Vector3(1.2544556, 1.0002441, 0.19580078)
+
+[node name="Muro_3" unique_id=128506105 instance=ExtResource("1_ypr0p")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1337598746]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0011291504, 0.4996338, 0.0031738281)
+shape = SubResource("BoxShape3D_w22c0")

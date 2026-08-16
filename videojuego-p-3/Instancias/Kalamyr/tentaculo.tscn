@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://vpnfyeb3ctfr"]
+
+[ext_resource type="PackedScene" uid="uid://d3hu7yavg523o" path="res://Models/Emma/Tentaculo.glb" id="1_2i2hb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2i2hb"]
+size = Vector3(1.7751465, 2.1855469, 1.7386475)
+
+[node name="Tentaculo" unique_id=607207124 instance=ExtResource("1_2i2hb")]
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=1717757562]
+autoplay = &"ArmatureAction"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=1608995523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.037719727, 1.0672612, 0.001159668)
+shape = SubResource("BoxShape3D_2i2hb")

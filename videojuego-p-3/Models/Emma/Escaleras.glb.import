@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://keggwda5e3jo"
-path="res://.godot/imported/Muro_1.glb-46101fcdad187d424483ea234c7d67f6.scn"
+uid="uid://uwbdqgo7fkiy"
+path="res://.godot/imported/Escaleras.glb-4e9d6bca8ce1d896f1e3fc8bd1b4a580.scn"
 
 [deps]
 
-source_file="res://Models/Emma/Muro_1.glb"
-dest_files=["res://.godot/imported/Muro_1.glb-46101fcdad187d424483ea234c7d67f6.scn"]
+source_file="res://Models/Emma/Escaleras.glb"
+dest_files=["res://.godot/imported/Escaleras.glb-4e9d6bca8ce1d896f1e3fc8bd1b4a580.scn"]
 
 [params]
 
 nodes/root_type="StaticBody3D"
-nodes/root_name="Muro_1"
+nodes/root_name="Escaleras"
 nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

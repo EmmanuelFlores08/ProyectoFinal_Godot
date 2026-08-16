@@ -3,18 +3,18 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d3hu7yavg523o"
-path="res://.godot/imported/Tentaculo.glb-264c15fa80e40cf2132ae10cc8a452bc.scn"
+uid="uid://bsvk6q4so76b4"
+path="res://.godot/imported/Ojo.glb-e4a18de14dbc47d9ec5f61c4357d6b45.scn"
 
 [deps]
 
-source_file="res://Models/Emma/Tentaculo.glb"
-dest_files=["res://.godot/imported/Tentaculo.glb-264c15fa80e40cf2132ae10cc8a452bc.scn"]
+source_file="res://Models/Emma/Ojo.glb"
+dest_files=["res://.godot/imported/Ojo.glb-e4a18de14dbc47d9ec5f61c4357d6b45.scn"]
 
 [params]
 
 nodes/root_type="StaticBody3D"
-nodes/root_name="Tentaculo"
+nodes/root_name="Ojo"
 nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
@@ -39,12 +39,12 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "animations": {
-"ArmatureAction": {
+"EYE_IDLE": {
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "",
-"settings/loop_mode": 2,
+"settings/loop_mode": 1,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
 "slice_1/name": "",

@@ -1,32 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3f5vhpm175a3"]
+[gd_scene format=3 uid="uid://d3f5vhpm175a3"]
 
-[ext_resource type="Script" uid="uid://cyeh01amsqxau" path="res://Scenes/pantalla_cargando.gd" id="1_mqt25"]
+[ext_resource type="Script" uid="uid://cyeh01amsqxau" path="res://Scripts/pantalla_cargando.gd" id="1_mqt25"]
 [ext_resource type="Texture2D" uid="uid://uah40vi64a6l" path="res://Models/Dalu/Cargando/fondo 2.jpeg" id="1_n4k4y"]
 [ext_resource type="FontFile" uid="uid://660bqhesyhoo" path="res://Fuentes/boldone/Boldone.otf" id="3_tjpn7"]
 
-[node name="PantallaCargando" type="Node3D"]
+[node name="PantallaCargando" type="Node3D" unique_id=517913159]
 
-[node name="pantalla cargando" type="Control" parent="."]
+[node name="pantalla cargando" type="Control" parent="." unique_id=733366040]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 649.0
 script = ExtResource("1_mqt25")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="pantalla cargando"]
+[node name="CanvasLayer" type="CanvasLayer" parent="pantalla cargando" unique_id=1407653442]
 
-[node name="fondo" type="TextureRect" parent="pantalla cargando/CanvasLayer"]
+[node name="fondo" type="TextureRect" parent="pantalla cargando/CanvasLayer" unique_id=1169023733]
 offset_right = 1152.5605
 offset_bottom = 648.0
 texture = ExtResource("1_n4k4y")
 expand_mode = 1
 
-[node name="color" type="ColorRect" parent="pantalla cargando/CanvasLayer"]
+[node name="color" type="ColorRect" parent="pantalla cargando/CanvasLayer" unique_id=1750957441]
 offset_right = 1152.0
 offset_bottom = 645.0
 color = Color(0.07450981, 0, 0.07058824, 0.37254903)
 
-[node name="Cargando" type="Label" parent="pantalla cargando/CanvasLayer"]
+[node name="Cargando" type="Label" parent="pantalla cargando/CanvasLayer" unique_id=48045935]
 offset_left = 17.0
 offset_top = 48.0
 offset_right = 723.0
@@ -35,7 +35,7 @@ theme_override_fonts/font = ExtResource("3_tjpn7")
 theme_override_font_sizes/font_size = 125
 text = "Cargando"
 
-[node name="punto1" type="Label" parent="pantalla cargando/CanvasLayer"]
+[node name="punto1" type="Label" parent="pantalla cargando/CanvasLayer" unique_id=642946499]
 offset_left = 723.0
 offset_top = 47.0
 offset_right = 763.0
@@ -44,7 +44,7 @@ theme_override_fonts/font = ExtResource("3_tjpn7")
 theme_override_font_sizes/font_size = 125
 text = "."
 
-[node name="punto2" type="Label" parent="pantalla cargando/CanvasLayer"]
+[node name="punto2" type="Label" parent="pantalla cargando/CanvasLayer" unique_id=1075896219]
 offset_left = 775.0
 offset_top = 47.0
 offset_right = 815.0
@@ -53,7 +53,7 @@ theme_override_fonts/font = ExtResource("3_tjpn7")
 theme_override_font_sizes/font_size = 125
 text = "."
 
-[node name="punto3" type="Label" parent="pantalla cargando/CanvasLayer"]
+[node name="punto3" type="Label" parent="pantalla cargando/CanvasLayer" unique_id=757745326]
 offset_left = 824.0
 offset_top = 47.0
 offset_right = 864.0
@@ -62,10 +62,10 @@ theme_override_fonts/font = ExtResource("3_tjpn7")
 theme_override_font_sizes/font_size = 125
 text = "."
 
-[node name="cargando2" type="Timer" parent="pantalla cargando/CanvasLayer"]
+[node name="cargando2" type="Timer" parent="pantalla cargando/CanvasLayer" unique_id=1133497212]
 wait_time = 0.5
 
-[node name="Timer" type="Timer" parent="pantalla cargando/CanvasLayer"]
+[node name="Timer" type="Timer" parent="pantalla cargando/CanvasLayer" unique_id=1220588006]
 wait_time = 4.0
 one_shot = true
 autostart = true
