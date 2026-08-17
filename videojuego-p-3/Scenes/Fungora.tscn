@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://hu6wodonncut"]
 
-[ext_resource type="PackedScene" uid="uid://drrski6n0h6u8" path="res://Instancias/fungora/piedra_5.tscn" id="2_51gkq"]
+[ext_resource type="PackedScene" uid="uid://dijbag50pjfeg" path="res://Instancias/fungora/piedra_5.tscn" id="2_51gkq"]
 [ext_resource type="PackedScene" uid="uid://d275xdnuv25d5" path="res://Instancias/fungora/piedra_4.tscn" id="3_buwj2"]
 [ext_resource type="PackedScene" uid="uid://bpheyji2noslq" path="res://Instancias/fungora/piedra_2.tscn" id="5_mfawc"]
 [ext_resource type="PackedScene" uid="uid://d4dehdxq8gvki" path="res://Instancias/fungora/piedra_3.tscn" id="6_yuq5n"]
 [ext_resource type="PackedScene" uid="uid://b6xojv6c5eqin" path="res://Instancias/fungora/piedra_1.tscn" id="7_mfawc"]
 [ext_resource type="PackedScene" uid="uid://f3ol8itah3bf" path="res://Instancias/fungora/suelo.tscn" id="7_uyh55"]
 [ext_resource type="PackedScene" uid="uid://bllllk1o4rg4q" path="res://Instancias/fungora/hongoarbolstatic.tscn" id="7_vqeyc"]
+[ext_resource type="PackedScene" uid="uid://ukt5as10dgx3" path="res://Instancias/fungora/hongo_6.tscn" id="8_yuq5n"]
+[ext_resource type="PackedScene" uid="uid://d1jpxsd6i4pcv" path="res://Instancias/fungora/hongo_5.tscn" id="9_vqeyc"]
+[ext_resource type="PackedScene" uid="uid://b1gce5kys88p7" path="res://Instancias/fungora/hongo_4.tscn" id="10_vqeyc"]
 
 [sub_resource type="GDScript" id="GDScript_uyh55"]
 resource_name = "prueba"
@@ -46,8 +49,11 @@ height = 3.0390625
 
 [node name="Fungora" type="Node3D" unique_id=1908667810]
 
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2139396336]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 17.79014)
+
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=568914702]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.845963, 4.9635735, 5.825185)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3583145, 7.7933187, -2.0621471)
 script = SubResource("GDScript_uyh55")
 
 [node name="piedra3" parent="CharacterBody3D" unique_id=472569863 instance=ExtResource("6_yuq5n")]
@@ -94,7 +100,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8214569, 0.5498533, -11.140
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.277855, 0.10836077, 6.1257343)
 
 [node name="piedra1" parent="." unique_id=1728414065 instance=ExtResource("7_mfawc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.55244, 1, 2.9169478)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.628394, -0.0075541735, 2.0551763)
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2139396336]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 17.79014)
+[node name="hongo6" parent="." unique_id=1153790690 instance=ExtResource("8_yuq5n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -4)
+
+[node name="hongo5" parent="." unique_id=1099451248 instance=ExtResource("9_vqeyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 18.570202)
+
+[node name="hongo4" parent="." unique_id=1870908950 instance=ExtResource("10_vqeyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0404315, 0.40356714, 6.2612)

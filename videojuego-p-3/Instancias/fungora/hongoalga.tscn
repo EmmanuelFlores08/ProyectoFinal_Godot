@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dn3p4wrps4wso"]
+
+[ext_resource type="PackedScene" uid="uid://dlbffd25eda8e" path="res://Models/Dalu/props/hongoalgaglb.glb" id="1_hawig"]
+
+[node name="hongoalga" unique_id=152647005 instance=ExtResource("1_hawig")]

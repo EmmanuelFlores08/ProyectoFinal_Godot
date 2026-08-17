@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ukt5as10dgx3"]
+
+[ext_resource type="PackedScene" uid="uid://2eklut125mib" path="res://Models/Dalu/props/hongo6.glb" id="1_wbr5n"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wbr5n"]
+radius = 1.0009766
+height = 3.3620605
+
+[node name="hongo6" unique_id=1153790690 instance=ExtResource("1_wbr5n")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="0" unique_id=1747658930]
+transform = Transform3D(1, 0, 0, 0, 0.31583142, 0, 0, 0, 1, -0.08790159, 0.56022346, -0.03516078)
+shape = SubResource("CapsuleShape3D_wbr5n")

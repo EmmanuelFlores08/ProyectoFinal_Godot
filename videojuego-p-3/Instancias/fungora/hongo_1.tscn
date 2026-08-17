@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cllqp1y2s11wt"]
+
+[ext_resource type="PackedScene" uid="uid://e6o5q3e5745h" path="res://Models/Dalu/props/hongo1.glb" id="1_ucrqc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l0p7j"]
+
+[node name="hongo1" unique_id=649901649 instance=ExtResource("1_ucrqc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=1040511448]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("SphereShape3D_l0p7j")
+
+[node name="@StaticBody3D@65956" parent="." index="2" unique_id=1935484457]
+transform = Transform3D(1, 0, 0, 0, 0.48158532, 0, 0, 0, 1, 0, 0, 0)

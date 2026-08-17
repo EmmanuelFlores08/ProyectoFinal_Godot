@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c7cd16bagfois"]
+
+[ext_resource type="PackedScene" uid="uid://beqfvoiesf86" path="res://Models/Dalu/props/hongo 3.glb" id="1_nkbcp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i8ljb"]
+
+[node name="hongo 3" unique_id=1000877844 instance=ExtResource("1_nkbcp")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=1752130797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
+shape = SubResource("SphereShape3D_i8ljb")

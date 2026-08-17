@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cca3ntx2h61pl"]
+
+[ext_resource type="PackedScene" uid="uid://dpskgy71xjgp6" path="res://Models/Dalu/props/zeta.glb" id="1_teiei"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nhgcy"]
+
+[node name="zeta" unique_id=1505507134 instance=ExtResource("1_teiei")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=663869527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("SphereShape3D_nhgcy")
