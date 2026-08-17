@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://sv0mjrxryvwj"]
 
 [ext_resource type="PackedScene" uid="uid://38mtn5ei5sex" path="res://Instancias/ElementosExtras/character.tscn" id="1_ajn1x"]
+[ext_resource type="PackedScene" uid="uid://bp4mp8p2xxwet" path="res://Instancias/ElementosExtras/gasolina.tscn" id="2_mcryw"]
+[ext_resource type="PackedScene" uid="uid://b1qjgrb4bh6h8" path="res://Instancias/ElementosExtras/nave.tscn" id="3_ahklx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ajn1x"]
 sky_top_color = Color(0.6039216, 0.24705882, 0.7882353, 1)
@@ -42,3 +44,17 @@ skeleton = NodePath("../..")
 shape = SubResource("WorldBoundaryShape3D_ahklx")
 
 [node name="Character" parent="." unique_id=1525265006 instance=ExtResource("1_ajn1x")]
+consumo_jetpack = 80.0
+recarga_jetpack = 70.0
+
+[node name="Gasolina" parent="." unique_id=1587462794 instance=ExtResource("2_mcryw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.106698036, 0.23265523, -6.0590563)
+
+[node name="Gasolina2" parent="." unique_id=1547683781 instance=ExtResource("2_mcryw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.106698, 0.23265523, -6.0590563)
+
+[node name="Gasolina3" parent="." unique_id=445086952 instance=ExtResource("2_mcryw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.893302, 0.23265523, -6.0590563)
+
+[node name="Nave" parent="." unique_id=206796122 instance=ExtResource("3_ahklx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)

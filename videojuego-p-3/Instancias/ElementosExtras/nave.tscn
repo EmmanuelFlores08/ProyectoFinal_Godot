@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://b1qjgrb4bh6h8"]
+
+[ext_resource type="PackedScene" uid="uid://bkh2w4m0vynbw" path="res://Models/Character/Nave.glb" id="1_7y3bi"]
+[ext_resource type="Script" uid="uid://37a21m6dovr7" path="res://Scripts/nave.gd" id="2_i33bm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i33bm"]
+size = Vector3(9, 3.5073242, 9)
+
+[sub_resource type="Animation" id="Animation_fx1mc"]
+resource_name = "IDLE_Nave"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5707964, 0), Vector3(0, 3.1415927, 0), Vector3(0, 4.712389, 0), Vector3(0, 6.2831855, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.03539198, 0), Vector3(0, 0.14422381, 0), Vector3(0, 0.209, 0), Vector3(0, 0.14422381, 0), Vector3(0, -0.03539198, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_al6on"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.03539198, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8t4v0"]
+_data = {
+&"IDLE_Nave": SubResource("Animation_fx1mc"),
+&"RESET": SubResource("Animation_al6on")
+}
+
+[node name="Nave" unique_id=206796122 instance=ExtResource("1_7y3bi")]
+script = ExtResource("2_i33bm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=259291122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7463379, 0)
+shape = SubResource("BoxShape3D_i33bm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=1627361883]
+root_node = NodePath("../Nave")
+libraries/ = SubResource("AnimationLibrary_8t4v0")
+
+[node name="CanvasVictoria" type="CanvasLayer" parent="." index="3" unique_id=329274664]
+process_mode = 3
+
+[node name="Panel" type="ColorRect" parent="CanvasVictoria" index="0" unique_id=956928497]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Contenido" type="VBoxContainer" parent="CanvasVictoria/Panel" index="0" unique_id=1706067860]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -130.0
+offset_right = 180.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+
+[node name="Titulo" type="Label" parent="CanvasVictoria/Panel/Contenido" index="0" unique_id=1305792567]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "¡Nivel completado!"
+horizontal_alignment = 1
+
+[node name="EtiquetaTiempo" type="Label" parent="CanvasVictoria/Panel/Contenido" index="1" unique_id=754347994]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Tiempo: 00:00.00"
+horizontal_alignment = 1
+
+[node name="BotonReintentar" type="Button" parent="CanvasVictoria/Panel/Contenido" index="2" unique_id=585764032]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Intentar de nuevo"
+
+[node name="BotonMenu" type="Button" parent="CanvasVictoria/Panel/Contenido" index="3" unique_id=1475111392]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Volver al menú"

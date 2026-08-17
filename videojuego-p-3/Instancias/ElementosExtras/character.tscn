@@ -7,24 +7,30 @@
 radius = 0.31640625
 height = 1.4204102
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_cam"]
+radius = 0.3
+
 [node name="Character" unique_id=1525265006 instance=ExtResource("1_v7fsd")]
 script = ExtResource("2_8ji2q")
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1770264381) index="0" unique_id=794161963]
+[node name="Armature" parent="." index="0" unique_id=1770264381]
+transform = Transform3D(-0.28588942, 0, -2.2351742e-08, 0, 0.28588942, 0, 2.2351742e-08, 0, -0.28588942, 0, 0.5892291, 0)
+
+[node name="Skeleton3D" parent="Armature" index="0" unique_id=794161963]
 bones/0/position = Vector3(0, -0.72347, 1.0010354e-08)
 bones/0/rotation = Quaternion(-0.04202333, 0.003669827, -0.00015435566, 0.99910986)
 bones/1/rotation = Quaternion(-0.21478145, 0.001685471, -0.0023055866, 0.976658)
-bones/2/rotation = Quaternion(0.11420761, 7.953652e-05, 0.0012507278, 0.9934561)
+bones/2/rotation = Quaternion(1.1366585e-12, -1.1891824e-07, -1.0186341e-10, 1)
 bones/3/rotation = Quaternion(0.45727363, 0.43261966, 0.72131675, -0.28886533)
-bones/4/rotation = Quaternion(-0.47777733, 0.047048725, 0.106879294, 0.8706848)
-bones/5/rotation = Quaternion(-0.06292645, -0.17060947, -0.5395669, 0.8220707)
+bones/4/rotation = Quaternion(-0.5023527, 0.097066075, 0.17195807, 0.84181374)
+bones/5/rotation = Quaternion(-0.044182766, -0.16209666, -0.60122126, 0.7812207)
 bones/6/position = Vector3(0.81388474, 0.6880136, -0.09623268)
-bones/6/rotation = Quaternion(0.162377, 0.011765706, -0.31078795, 0.9364327)
+bones/6/rotation = Quaternion(0.008503443, -0.038746003, -0.30858782, 0.9503684)
 bones/7/rotation = Quaternion(-0.019436145, 0.0016406787, 0.022907685, 0.9995473)
-bones/10/rotation = Quaternion(-0.44135895, -0.14406571, -0.26057982, 0.84649014)
-bones/11/rotation = Quaternion(-0.027794743, -0.01228988, 0.66229767, 0.7486242)
+bones/10/rotation = Quaternion(-0.45724908, -0.07949445, -0.16330574, 0.87059474)
+bones/11/rotation = Quaternion(-0.031577058, -0.019675143, 0.58175725, 0.8125111)
 bones/12/position = Vector3(-0.8138848, 0.68801355, -0.096232675)
-bones/12/rotation = Quaternion(-0.050342806, 0.06593368, 0.29293296, 0.9525276)
+bones/12/rotation = Quaternion(0.08411483, 0.024082197, 0.2992941, 0.95014095)
 bones/13/rotation = Quaternion(-0.023118863, -0.0017033988, -0.023154408, 0.9994631)
 
 [node name="belly" parent="Armature/Skeleton3D" index="0" unique_id=1660895651]
@@ -37,6 +43,32 @@ autoplay = &"Idle"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7102051, 0)
 shape = SubResource("CapsuleShape3D_8ji2q")
 
-[node name="Camera3D" type="Camera3D" parent="." index="3" unique_id=1455526552]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.9441612, -2.1793823)
-fov = 84.37499
+[node name="PivoteCamara" type="Node3D" parent="." index="3" unique_id=1736106010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="PivoteCamara" index="0" unique_id=1267849038]
+shape = SubResource("SphereShape3D_cam")
+spring_length = 4.0
+
+[node name="Camera3D" type="Camera3D" parent="PivoteCamara/SpringArm3D" index="0" unique_id=1557929934]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="4" unique_id=747906229]
+
+[node name="EtiquetaGasolina" type="Label" parent="CanvasLayer" index="0" unique_id=249790285]
+offset_left = 20.0
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 22
+text = "Gasolina: 0/3"
+
+[node name="BarraCombustible" type="ProgressBar" parent="CanvasLayer" index="1" unique_id=99478451]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 519.0
+offset_top = -51.0
+offset_right = 779.0
+offset_bottom = -23.0
+grow_vertical = 0
+value = 100.0
