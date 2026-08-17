@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://38mtn5ei5sex" path="res://Instancias/ElementosExtras/character.tscn" id="1_ajn1x"]
 [ext_resource type="PackedScene" uid="uid://bp4mp8p2xxwet" path="res://Instancias/ElementosExtras/gasolina.tscn" id="2_mcryw"]
 [ext_resource type="PackedScene" uid="uid://b1qjgrb4bh6h8" path="res://Instancias/ElementosExtras/nave.tscn" id="3_ahklx"]
+[ext_resource type="PackedScene" uid="uid://vpnfyeb3ctfr" path="res://Instancias/Kalamyr/tentaculo.tscn" id="4_63lca"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ajn1x"]
 sky_top_color = Color(0.6039216, 0.24705882, 0.7882353, 1)
@@ -58,3 +59,6 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.89
 
 [node name="Nave" parent="." unique_id=206796122 instance=ExtResource("3_ahklx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+
+[node name="Tentaculo" parent="." unique_id=607207124 instance=ExtResource("4_63lca")]
+transform = Transform3D(2.9802322e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 2.9802322e-08, 0, 0, 6)

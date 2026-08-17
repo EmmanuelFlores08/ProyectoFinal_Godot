@@ -39,14 +39,23 @@ extends CharacterBody3D
 @export var anim_aire: String = "Fall"
 @export var anim_jetpack: String = "Jet"
 
+# --- Nivel / muerte ---
+@export_group("Nivel")
+## Escena del menú de selección de escenario (botón "Salir a selección").
+@export_file("*.tscn") var escena_menu: String = "res://Scenes/elección_planeta.tscn"
+
 @onready var pivote_camara: Node3D = $PivoteCamara
 @onready var brazo_camara: SpringArm3D = $PivoteCamara/SpringArm3D
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var barra_combustible: ProgressBar = $CanvasLayer/BarraCombustible
 @onready var etiqueta_gasolina: Label = $CanvasLayer/EtiquetaGasolina
+@onready var canvas_muerte: CanvasLayer = $CanvasMuerte
+@onready var boton_reintentar: Button = $CanvasMuerte/Contenido/BotonReintentar
+@onready var boton_menu: Button = $CanvasMuerte/Contenido/BotonMenu
 
 var combustible: float = 0.0
 var gasolinas: int = 0
+var muerto: bool = false
 
 
 func _ready() -> void:
@@ -54,12 +63,17 @@ func _ready() -> void:
 	brazo_camara.spring_length = distancia_camara
 	# Evita que el brazo de cámara choque contra el propio personaje.
 	brazo_camara.add_excluded_object(get_rid())
+	canvas_muerte.visible = false
+	boton_reintentar.pressed.connect(_reintentar)
+	boton_menu.pressed.connect(_salir_menu)
 	if capturar_mouse:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_actualizar_ui()
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if muerto:
+		return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		# Giro horizontal: rota el cuerpo. Giro vertical: inclina el pivote.
 		rotate_y(-event.relative.x * sensibilidad_mouse)
@@ -78,6 +92,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if muerto:
+		velocity = Vector3.ZERO
+		return
 	var en_suelo: bool = is_on_floor()
 
 	# Gravedad.
@@ -143,3 +160,28 @@ func recolectar_gasolina(cantidad: int = 1) -> void:
 ## La llama la Nave para comprobar si el nivel puede completarse.
 func get_gasolinas() -> int:
 	return gasolinas
+
+
+## Sistema centralizado de muerte. Cualquier trampa la llama con
+## body.morir(): detiene al personaje, bloquea los controles y muestra
+## el Canvas de muerte. No hay que tocar este código al añadir trampas.
+func morir() -> void:
+	if muerto:
+		return
+	muerto = true
+	velocity = Vector3.ZERO
+	if anim.has_animation(anim_idle):
+		anim.play(anim_idle)
+	canvas_muerte.visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_tree().paused = true  # Congela el juego; el Canvas sigue activo.
+
+
+func _reintentar() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
+
+func _salir_menu() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(escena_menu)
