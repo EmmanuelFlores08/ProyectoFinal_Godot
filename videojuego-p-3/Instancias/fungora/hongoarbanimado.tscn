@@ -2,17 +2,25 @@
 
 [ext_resource type="PackedScene" uid="uid://ble84oyfau450" path="res://Models/Dalu/props/hongo arbol.glb" id="1_8tsyp"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8tsyp"]
+radius = 0.001
+height = 1.0
+
 [node name="hongoarbanimado" unique_id=2009531406 instance=ExtResource("1_8tsyp")]
 
-[node name="Armature" parent="." index="0" unique_id=1574713939]
-transform = Transform3D(1.1496661, 0, 0, 0, 1.1496661, 0, 0, 0, 1.1496661, -0.37400603, 0, -0.026385307)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=665875144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_8tsyp")
+
+[node name="Armature" parent="." index="1" unique_id=1574713939]
+transform = Transform3D(0.37660414, 0, 0, 0, 0.47114527, 0, 0, 0, 0.4251778, 0.005185291, 0, 0.19497257)
 
 [node name="Skeleton3D" parent="Armature" index="0" unique_id=933963094]
-bones/3/rotation = Quaternion(0.018919922, -0.0020052646, -0.013041205, 0.999734)
-bones/5/rotation = Quaternion(-0.46978083, -0.018754017, 0.08259319, 0.8787108)
-bones/6/rotation = Quaternion(0.35917774, 0.038409144, 0.041616865, 0.9315493)
+bones/3/rotation = Quaternion(0.018440899, -0.0025915937, 0.06403988, 0.9977736)
+bones/5/rotation = Quaternion(-0.41281185, -0.0015560198, 0.077202, 0.9075372)
+bones/6/rotation = Quaternion(0.36267832, -0.012460656, 0.18310538, 0.91366386)
 bones/9/rotation = Quaternion(-0.42536595, 0.015857462, 0.042316314, 0.9038926)
 bones/12/rotation = Quaternion(0.2220033, -0.008616622, 0.04863125, 0.9737943)
-bones/14/rotation = Quaternion(-7.273249e-08, 5.0687106e-08, 0.13843726, 0.9903712)
-bones/15/rotation = Quaternion(-1.872326e-09, -1.7408032e-08, 0.027020825, 0.999635)
-bones/16/rotation = Quaternion(4.6188195e-09, -4.303281e-09, -0.09712727, 0.995272)
+bones/14/rotation = Quaternion(-7.213844e-08, 5.1529057e-08, 0.12691694, 0.99191344)
+bones/15/rotation = Quaternion(-1.8723196e-09, -1.7408029e-08, 0.027020836, 0.99963486)
+bones/16/rotation = Quaternion(6.819144e-05, 0.00034600004, -0.0717379, 0.9974235)
