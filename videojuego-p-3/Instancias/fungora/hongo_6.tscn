@@ -4,10 +4,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wbr5n"]
 radius = 1.0009766
-height = 3.3620605
+height = 3.9456787
 
 [node name="hongo6" unique_id=1153790690 instance=ExtResource("1_wbr5n")]
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="0" unique_id=1747658930]
-transform = Transform3D(1, 0, 0, 0, 0.31583142, 0, 0, 0, 1, -0.08790159, 0.56022346, -0.03516078)
+transform = Transform3D(1, 0, 0, 0, 0.31583142, 0, 0, 0, 1, -0.08790159, 0.65238595, -0.03516078)
 shape = SubResource("CapsuleShape3D_wbr5n")

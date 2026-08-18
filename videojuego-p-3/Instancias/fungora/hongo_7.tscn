@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://bquox84r1tedk" path="res://Models/Dalu/props/hongo7.glb" id="1_wxmp4"]
 
 [node name="hongo7" unique_id=403018612 instance=ExtResource("1_wxmp4")]
+
+[node name="@StaticBody3D@64033" parent="." index="1" unique_id=1606873128]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.014296815, -0.009019971, 0.049777567)

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cn7h0c8g1c42k"]
+
+[ext_resource type="PackedScene" uid="uid://b5704ewuw2ruu" path="res://Models/Dalu/props/venenousmushroom.glb" id="1_e5i3a"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xu3d6"]
+height = 1.876831
+radius = 1.2954102
+
+[node name="hongovenenoso" unique_id=95336525 instance=ExtResource("1_e5i3a")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=401290863]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0367272, 0)
+shape = SubResource("CylinderShape3D_xu3d6")

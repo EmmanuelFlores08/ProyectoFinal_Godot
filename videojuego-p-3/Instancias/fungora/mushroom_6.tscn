@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c46so4awpj4f6"]
+
+[ext_resource type="PackedScene" uid="uid://jj2wld2c4iqh" path="res://Models/Dalu/props/mushroom6.glb" id="1_vl1wc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0r4mu"]
+height = 0.9313965
+radius = 0.90771484
+
+[node name="mushroom6" unique_id=599727527 instance=ExtResource("1_vl1wc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=364835161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68444824, 0)
+shape = SubResource("CylinderShape3D_0r4mu")
