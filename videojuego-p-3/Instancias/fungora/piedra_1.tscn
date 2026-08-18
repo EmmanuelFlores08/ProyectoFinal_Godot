@@ -7,6 +7,12 @@ size = Vector3(3, 1, 4)
 
 [node name="piedra1" unique_id=1728414065 instance=ExtResource("1_opf6c")]
 
+[node name="piedra 1" parent="." index="0" unique_id=1046201815]
+transform = Transform3D(0.5680027, 0, 0, 0, 0.6686769, 0, 0, 0, 0.45654815, -0.06875835, 0.013279811, 0.018212013)
+
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1" unique_id=1978489755]
-transform = Transform3D(0.71563405, 0, 0, 0, 0.6686769, 0, 0, 0, 0.4961012, 0.64687574, 0.013279811, 0.26626262)
+transform = Transform3D(0.5680027, 0, 0, 0, 0.6686769, 0, 0, 0, 0.45654815, 0.64687574, 0.013279811, 0.26626262)
 shape = SubResource("BoxShape3D_opf6c")
+
+[node name="@StaticBody3D@18805" parent="." index="2" unique_id=294748813]
+transform = Transform3D(0.5680027, 0, 0, 0, 0.6686769, 0, 0, 0, 0.45654815, -0.06875835, 0.013279811, 0.018212013)
