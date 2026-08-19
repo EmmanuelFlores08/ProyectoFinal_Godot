@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cmfmkmnywrwb5"]
+
+[ext_resource type="PackedScene" uid="uid://cvxeylfa14s06" path="res://Models/Camichi/Assets/CactusMonster.glb" id="1_sy7yj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m3a7r"]
+size = Vector3(0.3293457, 0.3577881, 0.5144043)
+
+[node name="SucuMonster" unique_id=1881144637 instance=ExtResource("1_sy7yj")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=1630223015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0008544922, 0.17449951, 0.091918945)
+shape = SubResource("BoxShape3D_m3a7r")
+
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(61933939) index="0" unique_id=897285067]
+bones/3/rotation = Quaternion(0.3214715, -3.3750783e-14, 7.664503e-08, 0.94691926)
+
+[node name="AnimationPlayer" parent="." index="2" unique_id=625612883]
+autoplay = &"Ani_LenguaCactus"

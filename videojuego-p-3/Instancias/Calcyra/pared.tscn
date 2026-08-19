@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b4p5y27l7bbh2"]
+
+[ext_resource type="PackedScene" uid="uid://dskhuvmclj87t" path="res://Models/Camichi/Assets/Pared.glb" id="1_yjixg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lenm5"]
+size = Vector3(1, 1.0010681, 0.10668945)
+
+[node name="Pared" unique_id=807399070 instance=ExtResource("1_yjixg")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1248468388]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49998474, -0.00012207031)
+shape = SubResource("BoxShape3D_lenm5")

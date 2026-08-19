@@ -1,3 +1,23 @@
 [gd_scene format=3 uid="uid://ciratghl0h7mu"]
 
+[ext_resource type="PackedScene" uid="uid://bxlb07h6stp5w" path="res://Instancias/Calcyra/piso_arena.tscn" id="1_64sj8"]
+[ext_resource type="PackedScene" uid="uid://cmfmkmnywrwb5" path="res://Instancias/Calcyra/sucu_monster.tscn" id="2_fx88l"]
+[ext_resource type="PackedScene" uid="uid://ddxhr6jnk4m45" path="res://Instancias/Calcyra/roca.tscn" id="3_1o7xi"]
+[ext_resource type="PackedScene" uid="uid://bfq0oq12jh6m0" path="res://Instancias/Calcyra/puente_piso.tscn" id="4_hk1wk"]
+[ext_resource type="PackedScene" uid="uid://38mtn5ei5sex" path="res://Instancias/ElementosExtras/character.tscn" id="5_avdp1"]
+
 [node name="Calcyra" type="Node3D" unique_id=1482503487]
+
+[node name="Piso_Arena" parent="." unique_id=1289664238 instance=ExtResource("1_64sj8")]
+
+[node name="SucuMonster" parent="." unique_id=1881144637 instance=ExtResource("2_fx88l")]
+transform = Transform3D(-3.496911e-07, 0, -8, 0, 8, 0, 8, 0, -3.496911e-07, 9.318657, 0.13396513, -0.18859196)
+
+[node name="Roca" parent="." unique_id=1626428178 instance=ExtResource("3_1o7xi")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 7.6153755, 0, -3.3167725)
+
+[node name="PuentePiso" parent="." unique_id=1969741171 instance=ExtResource("4_hk1wk")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -6.747278, 0, 0)
+
+[node name="Character" parent="." unique_id=1525265006 instance=ExtResource("5_avdp1")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -9.98888, 0.031, 0)

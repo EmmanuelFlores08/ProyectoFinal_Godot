@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ddjwg6vyum32s"]
+
+[ext_resource type="PackedScene" uid="uid://bk0tly64x04fp" path="res://Models/Camichi/Assets/Maceta.glb" id="1_fsedu"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yb2t1"]
+height = 0.29003906
+radius = 0.12158203
+
+[node name="Maceta" unique_id=1707578272 instance=ExtResource("1_fsedu")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=2071599076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1472168, 0)
+shape = SubResource("CylinderShape3D_yb2t1")

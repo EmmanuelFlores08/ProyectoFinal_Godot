@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bkalygggenaox"]
+
+[ext_resource type="PackedScene" uid="uid://dprh56y70xu8p" path="res://Models/Camichi/Assets/Espinas.glb" id="1_mgl0d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rnurf"]
+size = Vector3(0.39190674, 0.23449707, 0.3902893)
+
+[sub_resource type="Animation" id="Animation_sta0e"]
+resource_name = "Espinas"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 2, 2.5, 3, 4, 4.5, 5, 6, 6.5, 7, 8, 8.5, 9, 10, 10.5, 11, 12, 12.5, 13, 14, 14.5, 15, 16, 16.5, 17, 18, 18.5, 19, 20, 20.5, 21, 22, 22.5, 23),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.16, 0.16, 0.16), Vector3(1, 1, 1), Vector3(0.16, 0.16, 0.16), Vector3(0.16, 0.16, 0.16), Vector3(1, 1, 1), Vector3(0.16, 0.16, 0.16), Vector3(0.16, 0.16, 0.16), Vector3(1, 1, 1), Vector3(0.16, 0.16, 0.16), Vector3(0.16, 0.16, 0.16), Vector3(1, 1, 1), Vector3(0.16, 0.16, 0.16), Vector3(0.16, 0.16, 0.16), Vector3(1, 1, 1), Vector3(0.16, 0.16, 0.16), Vector3(0.16, 0.16, 0.16), Vector3(1, 1, 1), Vector3(0.16, 0.16, 0.16), Vector3(0.16, 0.16, 0.16), Vector3(1, 1, 1), Vector3(0.16, 0.16, 0.16), Vector3(0.16, 0.16, 0.16), Vector3(1, 1, 1), Vector3(0.16, 0.16, 0.16), Vector3(0.16, 0.16, 0.16), Vector3(1, 1, 1), Vector3(0.16, 0.16, 0.16), Vector3(0.16, 0.16, 0.16), Vector3(1, 1, 1), Vector3(0.16, 0.16, 0.16), Vector3(0.16, 0.16, 0.16), Vector3(1, 1, 1), Vector3(0.16, 0.16, 0.16), Vector3(0.16, 0.16, 0.16), Vector3(1, 1, 1), Vector3(0.16, 0.16, 0.16)]
+}
+
+[sub_resource type="Animation" id="Animation_h4srx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.16, 0.16, 0.16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j6380"]
+_data = {
+&"Espinas": SubResource("Animation_sta0e"),
+&"RESET": SubResource("Animation_h4srx")
+}
+
+[node name="Espinas" unique_id=764577694 instance=ExtResource("1_mgl0d")]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=2107306236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0011291504, 0.11883545, 0.0011138916)
+shape = SubResource("BoxShape3D_rnurf")
+
+[node name="Ani_Espinas" type="AnimationPlayer" parent="." index="2" unique_id=776732741]
+libraries/ = SubResource("AnimationLibrary_j6380")
+autoplay = &"Espinas"

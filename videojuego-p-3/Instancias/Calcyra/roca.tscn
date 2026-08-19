@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ddxhr6jnk4m45"]
+
+[ext_resource type="PackedScene" uid="uid://cndxicn3vutjl" path="res://Models/Camichi/Assets/Roca.glb" id="1_5kd46"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xeayu"]
+size = Vector3(0.20413208, 0.21998596, 0.17883301)
+
+[node name="Roca" unique_id=1432032509 instance=ExtResource("1_5kd46")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=1812014347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00035887957, 0.11237335, 6.1035156e-05)
+shape = SubResource("BoxShape3D_xeayu")

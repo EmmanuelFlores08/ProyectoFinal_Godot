@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cfosjpk5tb2xe"]
+
+[ext_resource type="PackedScene" uid="uid://bupr42jclerxc" path="res://Models/Camichi/Assets/CactusRedondo.glb" id="1_3m4gv"]
+
+[sub_resource type="Animation" id="Animation_w0nus"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CactusRedondo:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.34906584)]
+}
+
+[sub_resource type="Animation" id="Animation_wtave"]
+resource_name = "Sacudir_C"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CactusRedondo:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.34906584), Vector3(0, 0, -0.34906584), Vector3(0, 0, 0.34906584), Vector3(0, 0, -0.34906584), Vector3(0, 0, 0.34906584)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mx57a"]
+_data = {
+&"RESET": SubResource("Animation_w0nus"),
+&"Sacudir_C": SubResource("Animation_wtave")
+}
+
+[node name="Bolita" unique_id=718608028 instance=ExtResource("1_3m4gv")]
+
+[node name="CactusRedondo" parent="." index="0" unique_id=2102096876]
+transform = Transform3D(0.1917127, -0.06977771, 0, 0.06977771, 0.1917127, 0, 0, 0, 0.2040164, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=318789907]
+libraries/ = SubResource("AnimationLibrary_mx57a")
+autoplay = &"Sacudir_C"
