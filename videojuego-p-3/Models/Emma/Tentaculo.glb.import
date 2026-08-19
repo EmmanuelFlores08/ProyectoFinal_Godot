@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Tentaculo.glb-264c15fa80e40cf2132ae10cc8a452b
 
 [params]
 
-nodes/root_type="StaticBody3D"
+nodes/root_type="Area3D"
 nodes/root_name="Tentaculo"
 nodes/root_script=null
 nodes/apply_root_scale=true

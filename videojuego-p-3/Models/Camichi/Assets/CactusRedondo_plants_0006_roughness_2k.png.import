@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqejp3b072373"
+uid="uid://bhx3snrdji416"
 path.s3tc="res://.godot/imported/CactusRedondo_plants_0006_roughness_2k.png-54773ce636541a884566438b448b8b49.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "5de75ce0a3899ed76c144d7d7c84003b"
 }
 
 [deps]

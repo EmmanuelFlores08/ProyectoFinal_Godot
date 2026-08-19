@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://ciratghl0h7mu"]
 
+[ext_resource type="PackedScene" path="res://Instancias/ElementosExtras/musica_escenario.tscn" id="mus_esc"]
+
 [ext_resource type="PackedScene" uid="uid://bxlb07h6stp5w" path="res://Instancias/Calcyra/piso_arena.tscn" id="1_64sj8"]
 [ext_resource type="Texture2D" uid="uid://bmg5206ea8ori" path="res://Models/Camichi/HDRI/Sky1.jpg" id="1_vh20a"]
 [ext_resource type="PackedScene" uid="uid://cmfmkmnywrwb5" path="res://Instancias/Calcyra/sucu_monster.tscn" id="2_fx88l"]
@@ -30,6 +32,8 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="Calcyra" type="Node3D" unique_id=1482503487]
+
+[node name="Musica" parent="." instance=ExtResource("mus_esc")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=325068640]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)

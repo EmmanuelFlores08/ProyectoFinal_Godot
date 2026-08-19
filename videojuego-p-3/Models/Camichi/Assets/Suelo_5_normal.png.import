@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6f21pn6jlw4b"
+uid="uid://bsl7cpsjxc30x"
 path.s3tc="res://.godot/imported/Suelo_5_normal.png-9768c6b9c8b3fd232b9ee3878f636139.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "01decf457e77990b241e80aaa57b13c5"
 }
 
 [deps]

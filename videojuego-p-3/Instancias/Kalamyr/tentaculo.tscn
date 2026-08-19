@@ -1,15 +1,86 @@
 [gd_scene format=3 uid="uid://vpnfyeb3ctfr"]
 
 [ext_resource type="PackedScene" uid="uid://d3hu7yavg523o" path="res://Models/Emma/Tentaculo.glb" id="1_2i2hb"]
+[ext_resource type="Script" uid="uid://d0wsgj7d2d3i8" path="res://Scripts/trap.gd" id="2_5d4ea"]
+[ext_resource type="PackedScene" path="res://Instancias/ElementosExtras/trap.tscn" id="3_fsfk7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2i2hb"]
 size = Vector3(1.7751465, 2.1855469, 1.7386475)
 
-[node name="Tentaculo" unique_id=607207124 instance=ExtResource("1_2i2hb")]
+[sub_resource type="Animation" id="Animation_2riu8"]
+resource_name = "Golpe"
+length = 3.75
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.62, 1, 1.7, 2.82, 3.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.2646948, 2.813047, 0), Vector3(1.6569821, 1.7866235, 0), Vector3(1.6569821, 1.7866235, 0), Vector3(0.73056006, 2.8754869, 0), Vector3(-0.2782241, 2.8754869, 0), Vector3(1.2646948, 2.813047, 0)]
+}
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=1717757562]
+[sub_resource type="Animation" id="Animation_smvhb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.2646948, 2.813047, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_va7pd"]
+_data = {
+&"Golpe": SubResource("Animation_2riu8"),
+&"RESET": SubResource("Animation_smvhb")
+}
+
+[node name="Tentaculo" unique_id=1282732688 instance=ExtResource("1_2i2hb")]
+script = ExtResource("2_5d4ea")
+
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1053809782) index="0" unique_id=172280602]
+bones/1/rotation = Quaternion(-0.0005356227, 0.00023484201, -0.08369162, 0.9964916)
+bones/1/scale = Vector3(0.99981886, 0.99981886, 0.99981886)
+bones/2/rotation = Quaternion(-0.0005706136, 0.0001415774, -0.08773824, 0.99614346)
+bones/2/scale = Vector3(0.99981874, 0.99981874, 0.99981886)
+bones/3/rotation = Quaternion(-0.0005883608, -2.377598e-05, -0.19633521, 0.98053664)
+bones/3/scale = Vector3(0.9998188, 0.99981874, 0.99981886)
+bones/4/rotation = Quaternion(-0.00055531337, -0.00019604228, -0.09282701, 0.9956822)
+bones/4/scale = Vector3(0.99981886, 0.99981874, 0.99981886)
+bones/5/rotation = Quaternion(-0.0005299949, -0.00025667614, -0.010652626, 0.9999431)
+bones/5/scale = Vector3(0.9998187, 0.99981886, 0.99981886)
+bones/6/rotation = Quaternion(-0.00055927143, -0.0001842046, 0.15090384, 0.98854834)
+bones/6/scale = Vector3(0.9998188, 0.99981886, 0.9998188)
+bones/7/rotation = Quaternion(-0.000586926, -4.7507277e-05, 0.09495284, 0.9954816)
+bones/7/scale = Vector3(0.99981886, 0.99981886, 0.9998188)
+bones/8/rotation = Quaternion(-0.000585687, 4.882744e-05, 0.08685508, 0.9962209)
+bones/8/scale = Vector3(0.99981874, 0.9998187, 0.99981886)
+bones/9/rotation = Quaternion(-0.0005634532, 0.0001519819, 0.112293944, 0.9936749)
+bones/9/scale = Vector3(0.99981874, 0.99981874, 0.9998188)
+bones/10/rotation = Quaternion(-0.00048941537, 0.00029616329, 0.18458822, 0.98281586)
+bones/10/scale = Vector3(0.99981874, 0.99981874, 0.99981886)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=97184142]
 autoplay = &"ArmatureAction"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=1608995523]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.037719727, 1.0672612, 0.001159668)
 shape = SubResource("BoxShape3D_2i2hb")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="3" unique_id=128461948]
+root_node = NodePath("../Trap")
+libraries/ = SubResource("AnimationLibrary_va7pd")
+autoplay = &"Golpe"
+
+[node name="Trap" parent="." index="4" unique_id=1519718742 instance=ExtResource("3_fsfk7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2646948, 2.813047, 0)

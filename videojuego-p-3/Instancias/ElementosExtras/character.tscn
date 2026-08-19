@@ -2,7 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://3kx4s2alrfh7" path="res://Models/Character/Character.glb" id="1_v7fsd"]
 [ext_resource type="Script" uid="uid://dxexu0h7xxjnr" path="res://Scripts/character.gd" id="2_8ji2q"]
-[ext_resource type="Texture2D" uid="uid://420gakxdv4mn" path="res://icon.svg" id="3_icon"]
+[ext_resource type="Texture2D" uid="uid://7whgjgmejtq2" path="res://UI/Gasolina.png" id="3_nqfqx"]
+[ext_resource type="Texture2D" uid="uid://drdcy4jh4dy5y" path="res://UI/P_Perder.png" id="4_perder"]
+[ext_resource type="Texture2D" uid="uid://lrxoe7k0fj6n" path="res://UI/B_Rintentar.png" id="5_reint"]
+[ext_resource type="Texture2D" uid="uid://bdexbyamjtxsn" path="res://UI/B_Salir.png" id="6_salir"]
+[ext_resource type="Script" uid="uid://cncuv1f0a06bl" path="res://Scripts/boton_animado.gd" id="7_botan"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ji2q"]
 radius = 0.31640625
@@ -13,6 +17,7 @@ radius = 0.3
 
 [node name="Character" unique_id=1525265006 instance=ExtResource("1_v7fsd")]
 script = ExtResource("2_8ji2q")
+icono_gasolina = ExtResource("3_nqfqx")
 
 [node name="Armature" parent="." index="0" unique_id=1770264381]
 transform = Transform3D(-0.28588942, 0, -2.2351742e-08, 0, 0.28588942, 0, 2.2351742e-08, 0, -0.28588942, 0, 0.5892291, 0)
@@ -64,71 +69,132 @@ theme_override_font_sizes/font_size = 22
 text = "Gasolina: 0/3"
 
 [node name="BarraCombustible" type="ProgressBar" parent="CanvasLayer" index="1" unique_id=99478451]
-anchors_preset = 2
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 519.0
-offset_top = -51.0
-offset_right = 779.0
+offset_left = -565.0
+offset_top = -78.0
+offset_right = 568.0
 offset_bottom = -23.0
+grow_horizontal = 2
 grow_vertical = 0
 value = 100.0
+show_percentage = false
+
+[node name="IconosGasolina" type="HBoxContainer" parent="CanvasLayer" index="2" unique_id=390692314]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.0
+offset_top = 16.0
+offset_right = 110.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Icono1" type="TextureRect" parent="CanvasLayer/IconosGasolina" index="0" unique_id=317738489]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Icono2" type="TextureRect" parent="CanvasLayer/IconosGasolina" index="1" unique_id=661304579]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Icono3" type="TextureRect" parent="CanvasLayer/IconosGasolina" index="2" unique_id=1895079482]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="CanvasMuerte" type="CanvasLayer" parent="." index="5" unique_id=381898531]
 process_mode = 3
 visible = false
 
-[node name="Oscurecer" type="ColorRect" parent="CanvasMuerte" index="0" unique_id=1230059841]
+[node name="Fondo" type="TextureRect" parent="CanvasMuerte" index="0" unique_id=1795738491]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.7)
-
-[node name="Fondo" type="TextureRect" parent="CanvasMuerte" index="1" unique_id=1795738491]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+texture = ExtResource("4_perder")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Contenido" type="VBoxContainer" parent="CanvasMuerte" index="2" unique_id=1924730039]
-anchors_preset = 8
+[node name="Titulo" type="Label" parent="CanvasMuerte" index="1" unique_id=1078549500]
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -160.0
-offset_right = 200.0
-offset_bottom = 160.0
+offset_left = -500.0
+offset_top = 60.0
+offset_right = 500.0
+offset_bottom = 200.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 18
-
-[node name="Icono" type="TextureRect" parent="CanvasMuerte/Contenido" index="0" unique_id=1919200934]
-custom_minimum_size = Vector2(96, 96)
-layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("3_icon")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Texto" type="Label" parent="CanvasMuerte/Contenido" index="1" unique_id=1214486573]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "¡Has muerto!"
+theme_override_colors/font_color = Color(1, 0.85, 0.85, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 96
+text = "¡HAS PERDIDO!"
 horizontal_alignment = 1
 
-[node name="BotonReintentar" type="Button" parent="CanvasMuerte/Contenido" index="2" unique_id=375902301]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Reintentar nivel"
+[node name="EtiquetaTiempo" type="Label" parent="CanvasMuerte" index="2" unique_id=1444871714]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 210.0
+offset_right = 300.0
+offset_bottom = 280.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 44
+text = "Tiempo: 00:00.00"
+horizontal_alignment = 1
 
-[node name="BotonMenu" type="Button" parent="CanvasMuerte/Contenido" index="3" unique_id=1687789121]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Salir a selección de escenarios"
+[node name="BotonReintentar" type="TextureButton" parent="CanvasMuerte" index="3" unique_id=375902301]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -540.0
+offset_top = -250.0
+offset_right = -60.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("5_reint")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_botan")
+
+[node name="BotonSalir" type="TextureButton" parent="CanvasMuerte" index="4" unique_id=1687789121]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -250.0
+offset_right = 540.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("6_salir")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_botan")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="." index="6" unique_id=850243177]
+current = true
+
+[node name="SonidoMovimiento" type="AudioStreamPlayer" parent="." index="7" unique_id=73830388]
+
+[node name="SonidoAccion" type="AudioStreamPlayer" parent="." index="8" unique_id=1882666186]
+process_mode = 3

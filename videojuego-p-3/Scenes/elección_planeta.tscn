@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://cjo0lw0mm3jxy" path="res://UI/B_Kalamyr.png" id="6_xy5u0"]
 [ext_resource type="Texture2D" uid="uid://diol1kga6dnxn" path="res://UI/B_Fungora.png" id="7_4yt4g"]
 [ext_resource type="Texture2D" uid="uid://dvkk4wm0w5m0y" path="res://UI/B_Calcyra.png" id="8_fyu40"]
+[ext_resource type="Script" uid="uid://gu0nji4qgkwf" path="res://Scripts/eleccion_planeta.gd" id="9_elec"]
+[ext_resource type="Script" uid="uid://cncuv1f0a06bl" path="res://Scripts/boton_animado.gd" id="10_botan"]
+[ext_resource type="PackedScene" path="res://Instancias/ElementosExtras/musica_escenario.tscn" id="11_mus"]
+[ext_resource type="AudioStream" uid="uid://c2r8175ppew1r" path="res://Sounds/Music/Menu.mp3" id="12_menumus"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_48r03"]
 panorama = ExtResource("1_424m2")
@@ -168,6 +172,7 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [node name="ElecciónPlaneta" type="Node3D" unique_id=886701062]
+script = ExtResource("9_elec")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=874017690]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -209,44 +214,47 @@ grow_vertical = 2
 
 [node name="Titulo" type="Label" parent="IU/Control" unique_id=641540325]
 layout_mode = 0
-offset_left = 34.0
+offset_left = 437.0
 offset_top = 49.0
-offset_right = 1123.0
+offset_right = 1526.0
 offset_bottom = 138.0
 theme_override_fonts/font = ExtResource("4_n3a6r")
 theme_override_font_sizes/font_size = 80
 text = "Elige un planeta para explorar"
+horizontal_alignment = 1
 
 [node name="B_Planeta1" type="Button" parent="IU/Control" unique_id=1928950388]
 layout_mode = 0
-offset_left = 63.0
-offset_top = 423.0
-offset_right = 313.0
-offset_bottom = 593.0
+offset_left = 216.0
+offset_top = 717.0
+offset_right = 466.0
+offset_bottom = 887.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_424m2")
 icon = ExtResource("6_xy5u0")
 flat = true
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("10_botan")
 
 [node name="B_Planeta2" type="Button" parent="IU/Control" unique_id=677345283]
 layout_mode = 0
-offset_left = 446.0
-offset_top = 423.0
-offset_right = 696.0
-offset_bottom = 593.0
+offset_left = 815.0
+offset_top = 718.0
+offset_right = 1065.0
+offset_bottom = 888.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_48r03")
 icon = ExtResource("7_4yt4g")
 flat = true
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("10_botan")
 
 [node name="B_Planeta3" type="Button" parent="IU/Control" unique_id=912224035]
 layout_mode = 0
-offset_left = 822.0
-offset_top = 423.0
-offset_right = 1072.0
-offset_bottom = 593.0
+offset_left = 1499.0
+offset_top = 719.0
+offset_right = 1749.0
+offset_bottom = 889.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_qyd0g")
 text = "
 "
@@ -254,6 +262,10 @@ icon = ExtResource("8_fyu40")
 flat = true
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("10_botan")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1631925764]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.033652782, 0.9909339, 5.187125)
+
+[node name="Musica" parent="." unique_id=854399763 instance=ExtResource("11_mus")]
+musica = ExtResource("12_menumus")

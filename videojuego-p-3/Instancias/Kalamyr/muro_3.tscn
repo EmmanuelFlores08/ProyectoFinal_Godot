@@ -6,6 +6,7 @@
 size = Vector3(1.2544556, 1.0002441, 0.19580078)
 
 [node name="Muro_3" unique_id=128506105 instance=ExtResource("1_ypr0p")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1337598746]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0011291504, 0.4996338, 0.0031738281)

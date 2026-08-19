@@ -158,22 +158,31 @@ _data = {
 
 [node name="pantalla cargando" type="Control" parent="." unique_id=733366040]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1153.0
-offset_bottom = 649.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_mqt25")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="pantalla cargando" unique_id=1407653442]
 
 [node name="fondo" type="TextureRect" parent="pantalla cargando/CanvasLayer" unique_id=1169023733]
-offset_right = 1152.5605
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_n4k4y")
 expand_mode = 1
+stretch_mode = 6
 
 [node name="color" type="ColorRect" parent="pantalla cargando/CanvasLayer" unique_id=1750957441]
-offset_right = 1152.0
-offset_bottom = 645.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.07450981, 0, 0.07058824, 0.37254903)
 
 [node name="Cargando" type="Label" parent="pantalla cargando/CanvasLayer" unique_id=48045935]

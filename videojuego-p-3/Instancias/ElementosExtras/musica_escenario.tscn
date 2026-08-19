@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Scripts/musica_escenario.gd" id="1_mus"]
+
+[node name="MusicaEscenario" type="AudioStreamPlayer"]
+process_mode = 3
+script = ExtResource("1_mus")

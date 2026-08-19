@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bwl5txcy5s34o"]
+
+[ext_resource type="Script" uid="uid://dxn3wwt44hp87" path="res://Scripts/menu.gd" id="1_menu"]
+[ext_resource type="Texture2D" uid="uid://c2crem3s7fasn" path="res://UI/P_Inicio.png" id="2_inicio"]
+[ext_resource type="Texture2D" uid="uid://crbo00rwnbota" path="res://UI/B_Jugar.png" id="3_jugar"]
+[ext_resource type="Texture2D" uid="uid://bdexbyamjtxsn" path="res://UI/B_Salir.png" id="4_salir"]
+[ext_resource type="Script" uid="uid://cncuv1f0a06bl" path="res://Scripts/boton_animado.gd" id="5_botan"]
+[ext_resource type="PackedScene" path="res://Instancias/ElementosExtras/musica_escenario.tscn" id="6_mus"]
+[ext_resource type="AudioStream" uid="uid://c2r8175ppew1r" path="res://Sounds/Music/Menu.mp3" id="7_menumus"]
+
+[node name="Menu" type="Control" unique_id=1150500718]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Fondo" type="TextureRect" parent="." unique_id=264956220]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_inicio")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Botones" type="VBoxContainer" parent="." unique_id=1120863066]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="BotonJugar" type="TextureButton" parent="Botones" unique_id=1807200213]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_jugar")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("5_botan")
+
+[node name="BotonSalir" type="TextureButton" parent="Botones" unique_id=133266334]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("4_salir")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("5_botan")
+
+[node name="Musica" parent="." unique_id=1724885749 instance=ExtResource("6_mus")]
+musica = ExtResource("7_menumus")

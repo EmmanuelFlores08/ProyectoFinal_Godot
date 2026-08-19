@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://b1qjgrb4bh6h8" path="res://Instancias/ElementosExtras/nave.tscn" id="22_4lsm2"]
 [ext_resource type="PackedScene" uid="uid://bp4mp8p2xxwet" path="res://Instancias/ElementosExtras/gasolina.tscn" id="22_ldwr4"]
 [ext_resource type="PackedScene" uid="uid://di0p0242fv08f" path="res://Instancias/fungora/hongoarbanimado.tscn" id="23_4lsm2"]
+[ext_resource type="PackedScene" path="res://Instancias/ElementosExtras/musica_escenario.tscn" id="mus_esc"]
 
 [sub_resource type="Environment" id="Environment_4lsm2"]
 background_mode = 2
@@ -30,6 +31,13 @@ sky = ExtResource("1_ldwr4")
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_afw3k"]
 
 [node name="Fungora" type="Node3D" unique_id=1908667810]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=781621543]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="Musica" parent="." unique_id=1107104325 instance=ExtResource("mus_esc")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=84653002]
 environment = SubResource("Environment_4lsm2")

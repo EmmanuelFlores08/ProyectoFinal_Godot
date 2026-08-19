@@ -2,6 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bkh2w4m0vynbw" path="res://Models/Character/Nave.glb" id="1_7y3bi"]
 [ext_resource type="Script" uid="uid://37a21m6dovr7" path="res://Scripts/nave.gd" id="2_i33bm"]
+[ext_resource type="Texture2D" uid="uid://c2t83s1plvjet" path="res://UI/P_Ganar.png" id="3_ganar"]
+[ext_resource type="Texture2D" uid="uid://lrxoe7k0fj6n" path="res://UI/B_Rintentar.png" id="4_reint"]
+[ext_resource type="Texture2D" uid="uid://bdexbyamjtxsn" path="res://UI/B_Salir.png" id="5_salir"]
+[ext_resource type="Script" path="res://Scripts/boton_animado.gd" id="6_botan"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i33bm"]
 size = Vector3(9, 3.5073242, 9)
@@ -81,48 +85,79 @@ libraries/ = SubResource("AnimationLibrary_8t4v0")
 
 [node name="CanvasVictoria" type="CanvasLayer" parent="." index="3" unique_id=329274664]
 process_mode = 3
+visible = false
 
-[node name="Panel" type="ColorRect" parent="CanvasVictoria" index="0" unique_id=956928497]
+[node name="Fondo" type="TextureRect" parent="CanvasVictoria" index="0"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.6)
+texture = ExtResource("3_ganar")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="Contenido" type="VBoxContainer" parent="CanvasVictoria/Panel" index="0" unique_id=1706067860]
-layout_mode = 1
-anchors_preset = 8
+[node name="Titulo" type="Label" parent="CanvasVictoria" index="1"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -180.0
-offset_top = -130.0
-offset_right = 180.0
-offset_bottom = 130.0
+offset_left = -500.0
+offset_top = 50.0
+offset_right = 500.0
+offset_bottom = 190.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 18
-
-[node name="Titulo" type="Label" parent="CanvasVictoria/Panel/Contenido" index="0" unique_id=1305792567]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "¡Nivel completado!"
+theme_override_colors/font_color = Color(1, 0.95, 0.6, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 96
+text = "¡VICTORIA!"
 horizontal_alignment = 1
 
-[node name="EtiquetaTiempo" type="Label" parent="CanvasVictoria/Panel/Contenido" index="1" unique_id=754347994]
-layout_mode = 2
-theme_override_font_sizes/font_size = 26
+[node name="EtiquetaTiempo" type="Label" parent="CanvasVictoria" index="2" unique_id=754347994]
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 200.0
+offset_right = 300.0
+offset_bottom = 270.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
 text = "Tiempo: 00:00.00"
 horizontal_alignment = 1
 
-[node name="BotonReintentar" type="Button" parent="CanvasVictoria/Panel/Contenido" index="2" unique_id=585764032]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Intentar de nuevo"
+[node name="BotonReintentar" type="TextureButton" parent="CanvasVictoria" index="3" unique_id=585764032]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -540.0
+offset_top = -250.0
+offset_right = -60.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("4_reint")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("6_botan")
 
-[node name="BotonMenu" type="Button" parent="CanvasVictoria/Panel/Contenido" index="3" unique_id=1475111392]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Volver al menú"
+[node name="BotonSalir" type="TextureButton" parent="CanvasVictoria" index="4" unique_id=1475111392]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -250.0
+offset_right = 540.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("5_salir")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("6_botan")
+
+[node name="SonidoVictoria" type="AudioStreamPlayer" parent="." index="4"]
+process_mode = 3

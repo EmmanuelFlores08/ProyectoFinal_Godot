@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b16j3pifad6em"]
+
+[ext_resource type="PackedScene" uid="uid://keggwda5e3jo" path="res://Models/Emma/Muro_1.glb" id="1_fawov"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fawov"]
+albedo_color = Color(0.23392546, 0.23392546, 0.23392543, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ivdf"]
+size = Vector3(1, 0.99658203, 0.099731445)
+
+[node name="Muro_1" unique_id=621077250 instance=ExtResource("1_fawov")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Wall v1_0" parent="." index="0" unique_id=14146145]
+surface_material_override/0 = SubResource("StandardMaterial3D_fawov")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=628800341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49986768, -0.00030517578)
+shape = SubResource("BoxShape3D_0ivdf")
