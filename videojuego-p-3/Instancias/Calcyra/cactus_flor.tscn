@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ckm4dfkw4gv8y"]
+
+[ext_resource type="PackedScene" uid="uid://cyj4kiyilm5xo" path="res://Models/Camichi/Assets/EspinasFlor.glb" id="1_x8guy"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_guyn1"]
+height = 0.22988892
+radius = 0.19335938
+
+[node name="CactusFlor" unique_id=1639488396 instance=ExtResource("1_x8guy")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1147268783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11680603, 0)
+shape = SubResource("CylinderShape3D_guyn1")

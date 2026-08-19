@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://ld4qbxxjsb3s" path="res://Models/Camichi/Assets/Suelo.glb" id="1_erdhm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ffnd"]
-size = Vector3(23.932556, 0.06253052, 19.967651)
+size = Vector3(23.932556, 0.06253052, 15.678497)
 
 [node name="Piso_Arena" unique_id=1289664238 instance=ExtResource("1_erdhm")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=720864433]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036, 0, 0.048568726)
 shape = SubResource("BoxShape3D_3ffnd")
 
 [node name="Plane" parent="." index="1" unique_id=1023243827]
-transform = Transform3D(12, 0, 0, 0, 60, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(12, 0, 0, 0, 60, 0, 0, 0, 7.901085, 0, 0, 0)

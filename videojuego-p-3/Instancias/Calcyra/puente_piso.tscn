@@ -3,10 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://cxuljx807ccpg" path="res://Models/Camichi/Assets/Puente.glb" id="1_db23d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k3cvt"]
-size = Vector3(0.5963135, 0.22131348, 0.24591827)
+size = Vector3(0.66067505, 0.16708374, 0.27485847)
 
 [node name="PuentePiso" unique_id=1969741171 instance=ExtResource("1_db23d")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0" unique_id=654695309]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010070801, 0.11444092, -0.011226654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012283325, 0.08732605, -0.008563042)
 shape = SubResource("BoxShape3D_k3cvt")
+
+[node name="Puente" parent="." index="1" unique_id=1253145790]
+transform = Transform3D(1.1256607, 0, 0, 0, 0.764005, 0, 0, 0, 1.1661074, 0, 0, 0)

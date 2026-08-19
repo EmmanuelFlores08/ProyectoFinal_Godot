@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Espinas.glb-e7090dc871dbd1e33265ad970a82a8bc.
 
 [params]
 
-nodes/root_type="StaticBody3D"
+nodes/root_type="Node3D"
 nodes/root_name="Espinas"
 nodes/root_script=null
 nodes/apply_root_scale=true

@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dbxbqkh4a3igx"]
+
+[ext_resource type="PackedScene" uid="uid://bi7781b40rch5" path="res://Models/Camichi/Assets/Plataforma.glb" id="1_36b6f"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xrpqp"]
+height = 0.06300354
+radius = 0.22998047
+
+[sub_resource type="Animation" id="Animation_36b6f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xrpqp"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.5707964, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x03qm"]
+_data = {
+&"RESET": SubResource("Animation_36b6f"),
+&"new_animation": SubResource("Animation_xrpqp")
+}
+
+[node name="Platform" unique_id=1920398387 instance=ExtResource("1_36b6f")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=126270897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03603363, 0)
+shape = SubResource("CylinderShape3D_xrpqp")
+
+[node name="Ani_Plat" type="AnimationPlayer" parent="." index="2" unique_id=383044610]
+libraries/ = SubResource("AnimationLibrary_x03qm")
+autoplay = &"new_animation"
