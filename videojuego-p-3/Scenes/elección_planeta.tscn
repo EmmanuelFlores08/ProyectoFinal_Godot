@@ -1,10 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://c5j2skk3ht62p"]
+[gd_scene format=3 uid="uid://c5j2skk3ht62p"]
 
 [ext_resource type="Texture2D" uid="uid://b0310y3jdr5bq" path="res://NightSkyHDRI006_4K_TONEMAPPED.jpg" id="1_424m2"]
 [ext_resource type="PackedScene" uid="uid://boilml1brc5tl" path="res://P_Videojuego/Modelos glb/Planeta1.glb" id="1_jxfxj"]
 [ext_resource type="PackedScene" uid="uid://dulpqalr3cghn" path="res://P_Videojuego/Modelos glb/Planeta2.glb" id="2_n3a6r"]
 [ext_resource type="PackedScene" uid="uid://dsos0lsumwilp" path="res://P_Videojuego/Modelos glb/Planeta3.glb" id="3_424m2"]
 [ext_resource type="FontFile" uid="uid://ctunm7dqbmh3j" path="res://Fuentes/super_bouncer/Super Bouncer.ttf" id="4_n3a6r"]
+[ext_resource type="Texture2D" uid="uid://cjo0lw0mm3jxy" path="res://UI/B_Kalamyr.png" id="6_xy5u0"]
+[ext_resource type="Texture2D" uid="uid://diol1kga6dnxn" path="res://UI/B_Fungora.png" id="7_4yt4g"]
+[ext_resource type="Texture2D" uid="uid://dvkk4wm0w5m0y" path="res://UI/B_Calcyra.png" id="8_fyu40"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_48r03"]
 panorama = ExtResource("1_424m2")
@@ -164,45 +167,39 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[node name="ElecciónPlaneta" type="Node3D"]
+[node name="ElecciónPlaneta" type="Node3D" unique_id=886701062]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=874017690]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2128292835]
 environment = SubResource("Environment_bcsco")
 
-[node name="Planeta1" parent="." instance=ExtResource("1_jxfxj")]
+[node name="Planeta1" parent="." unique_id=842787852 instance=ExtResource("1_jxfxj")]
 transform = Transform3D(0.845, 0, 0, 0, 0.8450002, 0, 0, 0, 0.8450002, -4.580482, 0.022267818, -0.20886612)
 
-[node name="P1_Animacion" type="AnimationPlayer" parent="Planeta1"]
-libraries = {
-&"": SubResource("AnimationLibrary_bcsco")
-}
-autoplay = "RotacionP1"
+[node name="P1_Animacion" type="AnimationPlayer" parent="Planeta1" unique_id=1551922757]
+libraries/ = SubResource("AnimationLibrary_bcsco")
+autoplay = &"RotacionP1"
 
-[node name="Planeta2" parent="." instance=ExtResource("2_n3a6r")]
+[node name="Planeta2" parent="." unique_id=781038858 instance=ExtResource("2_n3a6r")]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, -0.03623867, 0.00747627, -0.30123806)
 
-[node name="P2_Animacion" type="AnimationPlayer" parent="Planeta2"]
-libraries = {
-&"": SubResource("AnimationLibrary_74hg3")
-}
-autoplay = "RotationP2"
+[node name="P2_Animacion" type="AnimationPlayer" parent="Planeta2" unique_id=733404894]
+libraries/ = SubResource("AnimationLibrary_74hg3")
+autoplay = &"RotationP2"
 
-[node name="Planeta3" parent="." instance=ExtResource("3_424m2")]
+[node name="Planeta3" parent="." unique_id=1890316613 instance=ExtResource("3_424m2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.713379, 0.034650475, -0.3589933)
 
-[node name="P3_Animacion" type="AnimationPlayer" parent="Planeta3"]
-libraries = {
-&"": SubResource("AnimationLibrary_ecl42")
-}
-autoplay = "RotationP3"
+[node name="P3_Animacion" type="AnimationPlayer" parent="Planeta3" unique_id=2124957025]
+libraries/ = SubResource("AnimationLibrary_ecl42")
+autoplay = &"RotationP3"
 
-[node name="IU" type="CanvasLayer" parent="."]
+[node name="IU" type="CanvasLayer" parent="." unique_id=1862255580]
 
-[node name="Control" type="Control" parent="IU"]
+[node name="Control" type="Control" parent="IU" unique_id=1830675870]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -210,7 +207,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Titulo" type="Label" parent="IU/Control"]
+[node name="Titulo" type="Label" parent="IU/Control" unique_id=641540325]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 49.0
@@ -220,32 +217,43 @@ theme_override_fonts/font = ExtResource("4_n3a6r")
 theme_override_font_sizes/font_size = 80
 text = "Elige un planeta para explorar"
 
-[node name="B_Planeta1" type="Button" parent="IU/Control"]
+[node name="B_Planeta1" type="Button" parent="IU/Control" unique_id=1928950388]
 layout_mode = 0
-offset_left = 141.0
-offset_top = 463.0
-offset_right = 251.0
-offset_bottom = 532.0
+offset_left = 63.0
+offset_top = 423.0
+offset_right = 313.0
+offset_bottom = 593.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_424m2")
-text = "KALAMYR"
+icon = ExtResource("6_xy5u0")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
-[node name="B_Planeta2" type="Button" parent="IU/Control"]
+[node name="B_Planeta2" type="Button" parent="IU/Control" unique_id=677345283]
 layout_mode = 0
-offset_left = 521.0
-offset_top = 463.0
-offset_right = 630.0
-offset_bottom = 533.0
+offset_left = 446.0
+offset_top = 423.0
+offset_right = 696.0
+offset_bottom = 593.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_48r03")
-text = "FUNGORA"
+icon = ExtResource("7_4yt4g")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
-[node name="B_Planeta3" type="Button" parent="IU/Control"]
+[node name="B_Planeta3" type="Button" parent="IU/Control" unique_id=912224035]
 layout_mode = 0
-offset_left = 912.0
-offset_top = 463.0
-offset_right = 1020.0
-offset_bottom = 531.0
+offset_left = 822.0
+offset_top = 423.0
+offset_right = 1072.0
+offset_bottom = 593.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_qyd0g")
-text = "CALCYRA"
+text = "
+"
+icon = ExtResource("8_fyu40")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1631925764]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.033652782, 0.9909339, 5.187125)
