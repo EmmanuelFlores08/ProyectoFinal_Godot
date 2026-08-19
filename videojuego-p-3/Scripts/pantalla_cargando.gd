@@ -14,8 +14,7 @@ func _ready():
 func _on_timer_timeout() -> void:
 	
 	print("¡¡EL TIMER FUNCIONÓ!!")
-	get_tree().change_scene_to_file("res://Instancias/Kalamyr/krakencito_1.tscn")
-
+	get_tree().change_scene_to_file("res://Scenes/Fungora.tscn")
 
 func _on_cargando_2_timeout() -> void:
 	estado += 1

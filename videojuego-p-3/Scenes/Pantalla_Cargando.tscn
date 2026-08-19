@@ -3,6 +3,156 @@
 [ext_resource type="Script" uid="uid://cyeh01amsqxau" path="res://Scripts/pantalla_cargando.gd" id="1_mqt25"]
 [ext_resource type="Texture2D" uid="uid://uah40vi64a6l" path="res://Models/Dalu/Cargando/fondo 2.jpeg" id="1_n4k4y"]
 [ext_resource type="FontFile" uid="uid://660bqhesyhoo" path="res://Fuentes/boldone/Boldone.otf" id="3_tjpn7"]
+[ext_resource type="Texture2D" uid="uid://ekry8u1k0igs" path="res://Models/Dalu/Cargando/17 sin título_20260818163854.png" id="4_5cklw"]
+[ext_resource type="Texture2D" uid="uid://bups3sduq10mr" path="res://Models/Dalu/Cargando/17 sin título_20260818163831.png" id="5_e5lsn"]
+
+[sub_resource type="Animation" id="Animation_0bbuu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x8r02"]
+resource_name = "aparecer"
+length = 2.1666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6666667, 1.3666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_agk8p"]
+_data = {
+&"RESET": SubResource("Animation_0bbuu"),
+&"aparecer": SubResource("Animation_x8r02")
+}
+
+[sub_resource type="Animation" id="Animation_5cklw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mhg62"]
+resource_name = "aparecer"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.53333336, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vb8jc"]
+_data = {
+&"RESET": SubResource("Animation_5cklw"),
+&"aparecer": SubResource("Animation_mhg62")
+}
+
+[sub_resource type="Animation" id="Animation_e5lsn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_agk8p"]
+resource_name = "aparecer"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mhg62"]
+_data = {
+&"RESET": SubResource("Animation_e5lsn"),
+&"aparecer": SubResource("Animation_agk8p")
+}
+
+[sub_resource type="Animation" id="Animation_vb8jc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mndpq"]
+resource_name = "aparecer"
+length = 1.3333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.46, 1.08),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q088b"]
+_data = {
+&"RESET": SubResource("Animation_vb8jc"),
+&"aparecer": SubResource("Animation_mndpq")
+}
 
 [node name="PantallaCargando" type="Node3D" unique_id=517913159]
 
@@ -66,9 +216,64 @@ text = "."
 wait_time = 0.5
 
 [node name="Timer" type="Timer" parent="pantalla cargando/CanvasLayer" unique_id=1220588006]
-wait_time = 4.0
+wait_time = 5.0
 one_shot = true
 autostart = true
+
+[node name="Space" type="TextureRect" parent="pantalla cargando/CanvasLayer" unique_id=1759697177]
+modulate = Color(1, 1, 1, 0)
+offset_left = 17.0
+offset_top = -29.0
+offset_right = 1103.0
+offset_bottom = 663.0
+texture = ExtResource("4_5cklw")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pantalla cargando/CanvasLayer/Space" unique_id=130983411]
+libraries/ = SubResource("AnimationLibrary_agk8p")
+autoplay = &"aparecer"
+
+[node name="W,A,S,D" type="TextureRect" parent="pantalla cargando/CanvasLayer" unique_id=1566669250]
+modulate = Color(1, 1, 1, 0)
+offset_left = 215.0
+offset_top = 156.0
+offset_right = 1006.1112
+offset_bottom = 601.0
+texture = ExtResource("5_e5lsn")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pantalla cargando/CanvasLayer/W,A,S,D" unique_id=2013854410]
+libraries/ = SubResource("AnimationLibrary_vb8jc")
+autoplay = &"aparecer"
+
+[node name="saltar" type="Label" parent="pantalla cargando/CanvasLayer" unique_id=1412376963]
+modulate = Color(1, 1, 1, 0)
+offset_left = 883.0
+offset_top = 601.0
+offset_right = 975.0
+offset_bottom = 629.0
+theme_override_fonts/font = ExtResource("3_tjpn7")
+theme_override_font_sizes/font_size = 25
+text = "Saltar"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pantalla cargando/CanvasLayer/saltar" unique_id=42912173]
+libraries/ = SubResource("AnimationLibrary_mhg62")
+autoplay = &"aparecer"
+
+[node name="Movimiento direccional" type="Label" parent="pantalla cargando/CanvasLayer" unique_id=1352096340]
+modulate = Color(1, 1, 1, 0)
+offset_left = 418.0
+offset_top = 601.0
+offset_right = 769.0
+offset_bottom = 629.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_tjpn7")
+theme_override_font_sizes/font_size = 25
+text = "Movimiento direccional"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pantalla cargando/CanvasLayer/Movimiento direccional" unique_id=1729450192]
+libraries/ = SubResource("AnimationLibrary_q088b")
+autoplay = &"aparecer"
 
 [connection signal="timeout" from="pantalla cargando/CanvasLayer/cargando2" to="pantalla cargando" method="_on_cargando_2_timeout"]
 [connection signal="timeout" from="pantalla cargando/CanvasLayer/Timer" to="pantalla cargando" method="_on_timer_timeout"]
