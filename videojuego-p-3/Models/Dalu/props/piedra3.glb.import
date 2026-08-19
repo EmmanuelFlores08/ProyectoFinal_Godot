@@ -13,8 +13,8 @@ dest_files=["res://.godot/imported/piedra3.glb-9a56ca20b3795af916647947fa4e2de8.
 
 [params]
 
-nodes/root_type=""
-nodes/root_name=""
+nodes/root_type="StaticBody3D"
+nodes/root_name="piedra3"
 nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
@@ -37,12 +37,6 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"nodes": {
-"PATH:@StaticBody3D@42386": {
-"node/node_type": "CollisionShape3D"
-}
-}
-}
+_subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1

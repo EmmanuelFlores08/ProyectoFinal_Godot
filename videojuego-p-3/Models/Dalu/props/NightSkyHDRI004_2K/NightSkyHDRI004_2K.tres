@@ -1,0 +1,9 @@
+[gd_resource type="Sky" format=3 uid="uid://cm0bspye80byx"]
+
+[ext_resource type="Texture2D" uid="uid://52o3xadj44iu" path="res://Models/Dalu/props/NightSkyHDRI004_2K/NightSkyHDRI004_2K_HDR.exr" id="acg_1aqbvt0z"]
+
+[sub_resource type="PanoramaSkyMaterial" id="acg_ny1fskwj"]
+panorama = ExtResource("acg_1aqbvt0z")
+
+[resource]
+sky_material = SubResource("acg_ny1fskwj")

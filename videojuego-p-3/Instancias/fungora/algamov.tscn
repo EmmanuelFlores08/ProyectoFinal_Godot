@@ -1,29 +1,54 @@
 [gd_scene format=3 uid="uid://7mjsoovbfb81"]
 
 [ext_resource type="PackedScene" uid="uid://bl3hbkvr0munn" path="res://Models/Dalu/props/alga mov.glb" id="1_l2lfe"]
+[ext_resource type="PackedScene" path="res://Instancias/ElementosExtras/trap.tscn" id="2_ogapo"]
+
+[sub_resource type="GDScript" id="GDScript_l2lfe"]
+resource_name = "hongomovalgabarrera"
+script/source = "extends StaticBody3D
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	$AnimationPlayer.play(\"alga mov\")
+"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l2lfe"]
 radius = 0.001
 
-[node name="algamov" unique_id=899523572 instance=ExtResource("1_l2lfe")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_l2lfe"]
+size = Vector3(1, 4.3144836, 2.9059453)
 
-[node name="Armature_001" parent="." index="0" unique_id=552546342]
+[node name="algamov" unique_id=899523572 instance=ExtResource("1_l2lfe")]
+script = SubResource("GDScript_l2lfe")
+
+[node name="Armature_001" parent="." index="0" unique_id=687284601]
 transform = Transform3D(0.37660414, 0, 0, 0, 0.47114527, 0, 0, 0, 0.4251778, 0.005185291, 0, 0.19497257)
 
-[node name="Skeleton3D" parent="Armature_001" index="0" unique_id=1182023694]
+[node name="Skeleton3D" parent="Armature_001" index="0" unique_id=124784991]
 bones/3/rotation = Quaternion(-0.014121682, 0.001992704, -0.18518825, 0.98259956)
 bones/5/rotation = Quaternion(0.014049375, 2.3634534e-08, 0.25906426, 0.9657579)
 bones/6/rotation = Quaternion(0.0018544536, 9.0336565e-09, -0.016052697, 0.9998695)
-bones/7/rotation = Quaternion(0.0048459778, 0.00022923262, 0.10772279, 0.9941691)
+bones/7/rotation = Quaternion(0.0048459778, 0.00022923268, 0.1077228, 0.9941692)
 bones/9/rotation = Quaternion(0.021344988, 3.6741653e-08, 0.36302698, 0.9315341)
 bones/11/rotation = Quaternion(0.018677283, -5.9469286e-08, 0.31765372, 0.94802284)
 bones/13/rotation = Quaternion(0.07874197, 0.045027487, 0.54231644, 0.8352636)
 bones/14/rotation = Quaternion(0.019923447, 0.00026208974, 0.48598713, 0.87373877)
 bones/19/rotation = Quaternion(-0.07184123, 0.0013534217, 0.6286708, 0.7743449)
-bones/23/rotation = Quaternion(0.020089282, 0.0030188807, 0.4932412, 0.86965543)
+bones/23/rotation = Quaternion(0.020089278, 0.0030188798, 0.49324113, 0.8696554)
 bones/28/rotation = Quaternion(-0.012375184, 0.00066796015, 0.24582106, 0.9692361)
-bones/32/rotation = Quaternion(0.010360713, 0.0027014336, -0.5566766, 0.8306604)
+bones/32/rotation = Quaternion(0.010360711, 0.0027014334, -0.55667657, 0.8306603)
 bones/36/rotation = Quaternion(0.0054471586, 0.003677369, -0.26913872, 0.96307904)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2" unique_id=87582382]
 shape = SubResource("SphereShape3D_l2lfe")
+
+[node name="Area3D" type="Area3D" parent="." index="3" unique_id=744018338]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" index="0" unique_id=404290642]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00930047, 2.1587257, 0.14790615)
+shape = SubResource("BoxShape3D_l2lfe")
+
+[node name="Trap" parent="." index="4" unique_id=776593417 instance=ExtResource("2_ogapo")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.037841797, 0.6378534, 0.23039384)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
