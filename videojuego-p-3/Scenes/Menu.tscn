@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cncuv1f0a06bl" path="res://Scripts/boton_animado.gd" id="5_botan"]
 [ext_resource type="PackedScene" path="res://Instancias/ElementosExtras/musica_escenario.tscn" id="6_mus"]
 [ext_resource type="AudioStream" uid="uid://c2r8175ppew1r" path="res://Sounds/Music/Menu.mp3" id="7_menumus"]
+[ext_resource type="FontFile" uid="uid://ctunm7dqbmh3j" path="res://Fuentes/super_bouncer/Super Bouncer.ttf" id="8_font"]
 
 [node name="Menu" type="Control" unique_id=1150500718]
 layout_mode = 3
@@ -33,10 +34,26 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 206.0
+offset_top = 19.0
+offset_right = 206.0
+offset_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.79, 0.79)
 theme_override_constants/separation = 24
 alignment = 1
+
+[node name="Nombre1" type="Label" parent="Botones" unique_id=484237128]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 200
+text = "Marcianini Scape"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="BotonJugar" type="TextureButton" parent="Botones" unique_id=1807200213]
 custom_minimum_size = Vector2(1000, 500)
@@ -56,5 +73,113 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("5_botan")
 
+[node name="BotonCreditos" type="Button" parent="." unique_id=1083996522]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -120.0
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 44
+text = "Créditos"
+script = ExtResource("5_botan")
+
 [node name="Musica" parent="." unique_id=1724885749 instance=ExtResource("6_mus")]
 musica = ExtResource("7_menumus")
+
+[node name="Creditos" type="CanvasLayer" parent="." unique_id=400083787]
+visible = false
+
+[node name="Fondo" type="ColorRect" parent="Creditos" unique_id=1366839480]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.02, 0.09, 0.96)
+
+[node name="Titulo" type="Label" parent="Creditos" unique_id=91621976]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 30.0
+offset_bottom = 130.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 80
+text = "Créditos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Nombres" type="VBoxContainer" parent="Creditos" unique_id=182669689]
+offset_left = -2.0
+offset_top = 152.0
+offset_right = 1915.0
+offset_bottom = 940.0
+alignment = 1
+
+[node name="Nombre1" type="Label" parent="Creditos/Nombres" unique_id=1066456558]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 40
+text = "Corona Cervantes Gayatri Camila"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Nombre2" type="Label" parent="Creditos/Nombres" unique_id=1619692188]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 40
+text = "Flores Ramirez Emmanuel"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Nombre3" type="Label" parent="Creditos/Nombres" unique_id=60209383]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 40
+text = "Roldan Hernandez Guadalupe Susana"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Nombre4" type="Label" parent="Creditos/Nombres" unique_id=724789579]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 40
+text = "Sánchez Hernández Gisela Abigail"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BotonCerrar" type="Button" parent="Creditos" unique_id=1423944614]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -110.0
+offset_right = 160.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("8_font")
+theme_override_font_sizes/font_size = 44
+text = "Salir"
+script = ExtResource("5_botan")

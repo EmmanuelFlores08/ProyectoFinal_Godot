@@ -264,6 +264,17 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("10_botan")
 
+[node name="BotonMenu" type="Button" parent="IU/Control"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 300.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("4_n3a6r")
+theme_override_font_sizes/font_size = 44
+text = "Menú"
+script = ExtResource("10_botan")
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1631925764]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.033652782, 0.9909339, 5.187125)
 

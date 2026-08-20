@@ -231,10 +231,10 @@ autostart = true
 
 [node name="Space" type="TextureRect" parent="pantalla cargando/CanvasLayer" unique_id=1759697177]
 modulate = Color(1, 1, 1, 0)
-offset_left = 17.0
-offset_top = -29.0
-offset_right = 1103.0
-offset_bottom = 663.0
+offset_left = 813.0
+offset_top = 388.0
+offset_right = 1899.0
+offset_bottom = 1080.0
 texture = ExtResource("4_5cklw")
 expand_mode = 1
 
@@ -244,10 +244,10 @@ autoplay = &"aparecer"
 
 [node name="W,A,S,D" type="TextureRect" parent="pantalla cargando/CanvasLayer" unique_id=1566669250]
 modulate = Color(1, 1, 1, 0)
-offset_left = 215.0
-offset_top = 156.0
-offset_right = 1006.1112
-offset_bottom = 601.0
+offset_left = 1011.0
+offset_top = 573.0
+offset_right = 1802.1112
+offset_bottom = 1018.0
 texture = ExtResource("5_e5lsn")
 expand_mode = 1
 
@@ -257,10 +257,10 @@ autoplay = &"aparecer"
 
 [node name="saltar" type="Label" parent="pantalla cargando/CanvasLayer" unique_id=1412376963]
 modulate = Color(1, 1, 1, 0)
-offset_left = 883.0
-offset_top = 601.0
-offset_right = 975.0
-offset_bottom = 629.0
+offset_left = 1679.0
+offset_top = 1018.0
+offset_right = 1771.0
+offset_bottom = 1046.0
 theme_override_fonts/font = ExtResource("3_tjpn7")
 theme_override_font_sizes/font_size = 25
 text = "Saltar"
@@ -271,10 +271,10 @@ autoplay = &"aparecer"
 
 [node name="Movimiento direccional" type="Label" parent="pantalla cargando/CanvasLayer" unique_id=1352096340]
 modulate = Color(1, 1, 1, 0)
-offset_left = 418.0
-offset_top = 601.0
-offset_right = 769.0
-offset_bottom = 629.0
+offset_left = 1214.0
+offset_top = 1018.0
+offset_right = 1565.0
+offset_bottom = 1046.0
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_tjpn7")
 theme_override_font_sizes/font_size = 25

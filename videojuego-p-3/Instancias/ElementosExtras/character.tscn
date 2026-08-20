@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dxexu0h7xxjnr" path="res://Scripts/character.gd" id="2_8ji2q"]
 [ext_resource type="Texture2D" uid="uid://7whgjgmejtq2" path="res://UI/Gasolina.png" id="3_nqfqx"]
 [ext_resource type="Texture2D" uid="uid://drdcy4jh4dy5y" path="res://UI/P_Perder.png" id="4_perder"]
+[ext_resource type="FontFile" uid="uid://ctunm7dqbmh3j" path="res://Fuentes/super_bouncer/Super Bouncer.ttf" id="5_dffhj"]
 [ext_resource type="Texture2D" uid="uid://lrxoe7k0fj6n" path="res://UI/B_Rintentar.png" id="5_reint"]
 [ext_resource type="Texture2D" uid="uid://bdexbyamjtxsn" path="res://UI/B_Salir.png" id="6_salir"]
 [ext_resource type="Script" uid="uid://cncuv1f0a06bl" path="res://Scripts/boton_animado.gd" id="7_botan"]
@@ -139,6 +140,7 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.85, 0.85, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("5_dffhj")
 theme_override_font_sizes/font_size = 96
 text = "¡HAS PERDIDO!"
 horizontal_alignment = 1
@@ -155,11 +157,13 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_dffhj")
 theme_override_font_sizes/font_size = 44
 text = "Tiempo: 00:00.00"
 horizontal_alignment = 1
 
 [node name="BotonReintentar" type="TextureButton" parent="CanvasMuerte" index="3" unique_id=375902301]
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -176,6 +180,7 @@ stretch_mode = 5
 script = ExtResource("7_botan")
 
 [node name="BotonSalir" type="TextureButton" parent="CanvasMuerte" index="4" unique_id=1687789121]
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
